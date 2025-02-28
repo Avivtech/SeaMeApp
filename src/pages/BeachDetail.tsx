@@ -179,7 +179,7 @@ const BeachDetail = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden scale-in">
               <div className="relative h-64 bg-gray-200">
                 <img
-                  src="/public/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png"
+                  src="/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png"
                   alt={beach.beach_name}
                   className="w-full h-full object-cover"
                 />

@@ -47,10 +47,10 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
             generatePlaceholderColor(beach.beach_name),
             isLoaded ? "loaded" : ""
           )}
-          style={{ backgroundImage: `url(/public/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png)` }}
+          style={{ backgroundImage: `url(/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png)` }}
         >
           <img 
-            src="/public/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png" 
+            src="/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png" 
             alt={beach.beach_name} 
             className="w-full h-full object-cover"
             onLoad={() => setIsLoaded(true)}
