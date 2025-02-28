@@ -9,13 +9,13 @@ import { Button } from '@/components/ui/button';
 import {
   MapPin,
   Phone,
-  Wheelchair,
+  Accessibility,
   Check,
   X,
   ArrowRight,
   Coffee,
   Droplets,
-  Sandals,
+  Umbrella,
   Sun,
   Car
 } from 'lucide-react';
@@ -221,7 +221,7 @@ const BeachDetail = () => {
                   <AccessibilityItem 
                     title="שירותי נכים" 
                     value={beach.accessible_restrooms.disabled_restrooms}
-                    icon={<Wheelchair className="h-5 w-5" />} 
+                    icon={<Accessibility className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="מקלחות נגישות" 
@@ -231,7 +231,7 @@ const BeachDetail = () => {
                   <AccessibilityItem 
                     title="מלתחות נגישות" 
                     value={beach.accessible_changing_rooms}
-                    icon={<Sandals className="h-5 w-5" />} 
+                    icon={<Umbrella className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="סככות צל נגישות" 
@@ -241,7 +241,7 @@ const BeachDetail = () => {
                   <AccessibilityItem 
                     title="כסאות גלגלים למים" 
                     value={beach.special_wheelchairs.water_accessible_wheelchairs}
-                    icon={<Wheelchair className="h-5 w-5" />} 
+                    icon={<Accessibility className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="קפה/מסעדה" 

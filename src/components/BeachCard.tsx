@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 import { Beach } from '@/types/beaches';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { Phone, MapPin, Wheelchair } from 'lucide-react';
+import { Phone, MapPin, Accessibility } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface BeachCardProps {
   beach: Beach;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const BeachCard: React.FC<BeachCardProps> = ({ beach, className }) => {
+const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   // Determine accessibility score color
@@ -38,6 +39,7 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className }) => {
           "overflow-hidden relative card-hover transition-all duration-300 border border-gray-200",
           className
         )}
+        style={style}
       >
         <div 
           className={cn(
@@ -75,7 +77,7 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className }) => {
           <div className="grid grid-cols-2 gap-2 text-sm mt-3">
             {beach.accessible_parking.disabled_parking === "כן" && (
               <div className="flex items-center text-green-600">
-                <Wheelchair className="w-4 h-4 ml-1" />
+                <Accessibility className="w-4 h-4 ml-1" />
                 <span>חניית נכים</span>
               </div>
             )}
