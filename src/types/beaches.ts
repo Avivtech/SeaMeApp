@@ -48,6 +48,8 @@ export interface Beach {
   };
   beach_season: string;
   accessible_public_transportation: string;
+  main_image: string;
+  other_images: string[];
   rating: number;
 }
 
