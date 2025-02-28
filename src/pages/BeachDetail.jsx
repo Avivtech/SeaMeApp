@@ -109,12 +109,12 @@ const BeachDetail = () => {
       <div>
         <h3 className="font-medium text-sm">{title}</h3>
         <div className="flex items-center mt-1">
-          {value === 'כן' ? (
+          {value === 'כן' || value === 'true' ? (
             <span className="text-green-600 flex items-center">
               <Check className="w-4 h-4 mr-1" />
               זמין
             </span>
-          ) : value === 'לא' ? (
+          ) : value === 'לא' || value === 'false' ? (
             <span className="text-red-500 flex items-center">
               <X className="w-4 h-4 mr-1" />
               לא זמין
