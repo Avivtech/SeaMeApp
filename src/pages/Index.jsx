@@ -74,43 +74,8 @@ const Index = () => {
           throw new Error('Failed to fetch beaches data');
         }
         const data = await response.json();
-        
-        // Convert "כן" values to "true" and "לא" values to "false"
-        const processedData = data.map(beach => {
-          return {
-            ...beach,
-            accessible_parking: {
-              ...beach.accessible_parking,
-              disabled_parking: beach.accessible_parking?.disabled_parking === 'כן' ? 'true' : beach.accessible_parking?.disabled_parking
-            },
-            beach_access: {
-              ...beach.beach_access,
-              solid_path_to_water: beach.beach_access?.solid_path_to_water === 'כן' ? 'true' : beach.beach_access?.solid_path_to_water,
-              obstacle_free_access: beach.beach_access?.obstacle_free_access === 'כן' ? 'true' : beach.beach_access?.obstacle_free_access
-            },
-            shade_shelter: {
-              ...beach.shade_shelter,
-              accessible_shelter: beach.shade_shelter?.accessible_shelter === 'כן' ? 'true' : beach.shade_shelter?.accessible_shelter
-            },
-            special_wheelchairs: {
-              ...beach.special_wheelchairs,
-              water_accessible_wheelchairs: beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן' ? 'true' : beach.special_wheelchairs?.water_accessible_wheelchairs
-            },
-            accessible_restrooms: {
-              ...beach.accessible_restrooms,
-              disabled_restrooms: beach.accessible_restrooms?.disabled_restrooms === 'כן' ? 'true' : beach.accessible_restrooms?.disabled_restrooms
-            },
-            cafe_restaurant: {
-              ...beach.cafe_restaurant,
-              exists: beach.cafe_restaurant?.exists === 'כן' ? 'true' : beach.cafe_restaurant?.exists,
-              wheelchair_accessible: beach.cafe_restaurant?.wheelchair_accessible === 'כן' ? 'true' : beach.cafe_restaurant?.wheelchair_accessible
-            },
-            accessible_changing_rooms: beach.accessible_changing_rooms === 'כן' ? 'true' : beach.accessible_changing_rooms
-          };
-        });
-        
-        setBeaches(processedData);
-        setFilteredBeaches(processedData);
+        setBeaches(data);
+        setFilteredBeaches(data);
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching beaches:', error);
@@ -200,19 +165,19 @@ const Index = () => {
         return activeFilters.every(([filterId, _]) => {
           switch (filterId) {
             case 'disabled_parking':
-              return beach.accessible_parking?.disabled_parking === 'true' || beach.accessible_parking?.disabled_parking === 'כן';
+              return beach.accessible_parking?.disabled_parking === 'כן';
             case 'solid_path_to_water':
-              return beach.beach_access?.solid_path_to_water === 'true' || beach.beach_access?.solid_path_to_water === 'כן';
+              return beach.beach_access?.solid_path_to_water === 'כן';
             case 'accessible_restrooms':
-              return beach.accessible_restrooms?.disabled_restrooms === 'true' || beach.accessible_restrooms?.disabled_restrooms === 'כן';
+              return beach.accessible_restrooms?.disabled_restrooms === 'כן';
             case 'accessible_changing_rooms':
-              return beach.accessible_changing_rooms === 'true' || beach.accessible_changing_rooms === 'כן';
+              return beach.accessible_changing_rooms === 'כן';
             case 'cafe_restaurant':
-              return beach.cafe_restaurant?.exists === 'true' || beach.cafe_restaurant?.exists === 'כן';
+              return beach.cafe_restaurant?.exists === 'כן';
             case 'accessible_shelter':
-              return beach.shade_shelter?.accessible_shelter === 'true' || beach.shade_shelter?.accessible_shelter === 'כן';
+              return beach.shade_shelter?.accessible_shelter === 'כן';
             case 'water_accessible_wheelchairs':
-              return beach.special_wheelchairs?.water_accessible_wheelchairs === 'true' || beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
+              return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
             case 'כינרת':
               return beach.region === filterId;
             default:
@@ -307,19 +272,19 @@ const Index = () => {
             return activeFilters.every(([filterId, _]) => {
               switch (filterId) {
                 case 'disabled_parking':
-                  return beach.accessible_parking?.disabled_parking === 'true' || beach.accessible_parking?.disabled_parking === 'כן';
+                  return beach.accessible_parking?.disabled_parking === 'כן';
                 case 'solid_path_to_water':
-                  return beach.beach_access?.solid_path_to_water === 'true' || beach.beach_access?.solid_path_to_water === 'כן';
+                  return beach.beach_access?.solid_path_to_water === 'כן';
                 case 'accessible_restrooms':
-                  return beach.accessible_restrooms?.disabled_restrooms === 'true' || beach.accessible_restrooms?.disabled_restrooms === 'כן';
+                  return beach.accessible_restrooms?.disabled_restrooms === 'כן';
                 case 'accessible_changing_rooms':
-                  return beach.accessible_changing_rooms === 'true' || beach.accessible_changing_rooms === 'כן';
+                  return beach.accessible_changing_rooms === 'כן';
                 case 'cafe_restaurant':
-                  return beach.cafe_restaurant?.exists === 'true' || beach.cafe_restaurant?.exists === 'כן';
+                  return beach.cafe_restaurant?.exists === 'כן';
                 case 'accessible_shelter':
-                  return beach.shade_shelter?.accessible_shelter === 'true' || beach.shade_shelter?.accessible_shelter === 'כן';
+                  return beach.shade_shelter?.accessible_shelter === 'כן';
                 case 'water_accessible_wheelchairs':
-                  return beach.special_wheelchairs?.water_accessible_wheelchairs === 'true' || beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
+                  return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
                 case 'כינרת':
                   return beach.region === filterId;
                 default:
