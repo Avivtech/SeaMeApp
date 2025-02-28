@@ -5,7 +5,7 @@ import Footer from '@/components/Footer.jsx';
 import SearchBar from '@/components/SearchBar.tsx';
 import FilterItem from '@/components/FilterItem.tsx';
 import BeachCard from '@/components/BeachCard.tsx';
-import FilterPanel from '@/components/FilterPanel.jsx';
+import FilterPanel from '@/components/FilterPanel.tsx';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { 
@@ -51,7 +51,6 @@ const Index = () => {
       icon: <Coffee className="h-5 w-5" />,
       options: [
         { id: 'cafe_restaurant', label: 'מסעדה/קפה', isActive: false },
-        { id: 'accessible_shelter', label: 'סככות צל נגישות', isActive: false },
         { id: 'water_accessible_wheelchairs', label: 'כסאות גלגלים למים', isActive: false }
       ]
     },
@@ -176,8 +175,6 @@ const Index = () => {
               return beach.accessible_changing_rooms === 'כן' || beach.accessible_changing_rooms === true;
             case 'cafe_restaurant':
               return beach.cafe_restaurant?.exists === 'כן' || beach.cafe_restaurant?.exists === true;
-            case 'accessible_shelter':
-              return beach.shade_shelter?.accessible_shelter === 'כן' || beach.shade_shelter?.accessible_shelter === true;
             case 'water_accessible_wheelchairs':
               return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן' || beach.special_wheelchairs?.water_accessible_wheelchairs === true;
             case 'כינרת':
@@ -283,8 +280,6 @@ const Index = () => {
                   return beach.accessible_changing_rooms === 'כן' || beach.accessible_changing_rooms === true;
                 case 'cafe_restaurant':
                   return beach.cafe_restaurant?.exists === 'כן' || beach.cafe_restaurant?.exists === true;
-                case 'accessible_shelter':
-                  return beach.shade_shelter?.accessible_shelter === 'כן' || beach.shade_shelter?.accessible_shelter === true;
                 case 'water_accessible_wheelchairs':
                   return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן' || beach.special_wheelchairs?.water_accessible_wheelchairs === true;
                 case 'כינרת':
@@ -445,7 +440,7 @@ const Index = () => {
                 label="צל"
                 isActive={searchParams.filters.accessible_shelter}
                 onClick={() => {
-                  handleFilterChange('services', 'accessible_shelter');
+                  handleFilterChange('services', 'water_accessible_wheelchairs');
                   applyFilters();
                 }}
               />

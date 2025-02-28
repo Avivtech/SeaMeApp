@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FilterCategory } from '@/types/beaches';
 import { Button } from '@/components/ui/button';
 import FilterItem from './FilterItem';
-import { X } from 'lucide-react';
+import { X, Check } from 'lucide-react';
 
 interface FilterPanelProps {
   title: string;
@@ -29,21 +29,39 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
   };
 
   const currentCategory = categories.find(cat => cat.id === activeCategory);
+  
+  // Count total active filters
+  const activeFiltersCount = categories.reduce(
+    (count, category) => count + category.options.filter(option => option.isActive).length, 
+    0
+  );
 
   return (
-    <div className={`bg-white rounded-3xl shadow-sm border border-gray-200 p-6 ${className}`}>
+    <div className={`bg-white rounded-3xl shadow-sm border border-gray-200 p-6 relative ${className}`}>
+      {activeFiltersCount > 0 && (
+        <div className="absolute -top-2 -right-2 bg-primary text-white text-xs font-medium px-2 py-1 rounded-full">
+          {activeFiltersCount} פעיל
+        </div>
+      )}
+      
       <h2 className="text-2xl font-bold mb-6 text-center">{title}</h2>
       
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-        {categories.map((category) => (
-          <FilterItem
-            key={category.id}
-            icon={category.icon}
-            label={category.title}
-            isActive={activeCategory === category.id}
-            onClick={() => handleCategoryClick(category.id)}
-          />
-        ))}
+        {categories.map((category) => {
+          // Count active filters in this category
+          const activeCategoryFilters = category.options.filter(option => option.isActive).length;
+          
+          return (
+            <FilterItem
+              key={category.id}
+              icon={category.icon}
+              label={category.title}
+              isActive={activeCategory === category.id || activeCategoryFilters > 0}
+              onClick={() => handleCategoryClick(category.id)}
+              className="relative"
+            />
+          );
+        })}
       </div>
       
       {currentCategory && (
@@ -66,8 +84,10 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
               <div
                 key={option.id}
                 className={`
-                  border rounded-lg p-3 cursor-pointer transition-all
-                  ${option.isActive ? 'bg-primary/10 border-primary' : 'border-gray-200 hover:border-gray-300'}
+                  border rounded-lg p-3 cursor-pointer transition-all relative
+                  ${option.isActive 
+                    ? 'bg-primary/10 border-primary shadow-sm' 
+                    : 'border-gray-200 hover:border-gray-300'}
                 `}
                 onClick={() => onFilterChange(currentCategory.id, option.id)}
               >
@@ -89,8 +109,14 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
                       </svg>
                     )}
                   </div>
-                  <span className="text-sm">{option.label}</span>
+                  <span className={`text-sm ${option.isActive ? 'font-medium text-primary' : ''}`}>
+                    {option.label}
+                  </span>
                 </div>
+                
+                {option.isActive && (
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full"></div>
+                )}
               </div>
             ))}
           </div>
@@ -102,14 +128,25 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
           variant="outline"
           onClick={onReset}
           className="w-full"
+          disabled={activeFiltersCount === 0}
         >
-          ניקוי
+          {activeFiltersCount > 0 ? (
+            <>
+              <X className="h-4 w-4 ml-1" />
+              ניקוי ({activeFiltersCount})
+            </>
+          ) : 'ניקוי'}
         </Button>
         <Button
           onClick={onApply}
-          className="w-full"
+          className={`w-full ${activeFiltersCount > 0 ? 'bg-primary hover:bg-primary/90' : ''}`}
         >
-          חיפוש
+          {activeFiltersCount > 0 ? (
+            <>
+              <Check className="h-4 w-4 ml-1" />
+              החל סינון ({activeFiltersCount})
+            </>
+          ) : 'חיפוש'}
         </Button>
       </div>
     </div>
