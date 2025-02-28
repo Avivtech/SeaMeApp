@@ -52,10 +52,14 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return name.length > maxLength ? name.substring(0, maxLength) + '...' : name;
   };
 
-  // Generate image path from beach name
-  const getBeachImagePath = (beachName: string) => {
-    // Extract the first word from beach name and convert to lowercase
-    const firstWord = beachName.split(' ')[0].toLowerCase();
+  // Get beach image path - extract the beach name's first word for the image filename
+  const getBeachImagePath = (beach: any) => {
+    if (beach.main_image && beach.main_image !== '') {
+      return beach.main_image;
+    }
+    
+    // Fallback to naming convention if no main_image specified
+    const firstWord = beach.beach_name.split(' ')[1].toLowerCase();
     return `/beach_images/${firstWord}.jfif`;
   };
 
@@ -74,15 +78,27 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
           <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
             {/* Try to load the beach image with fallback */}
             <img 
-              src={getBeachImagePath(beach.beach_name)} 
+              src={getBeachImagePath(beach)} 
               alt={beach.beach_name}
               className="w-full h-full object-cover"
               onError={(e) => {
-                // Fallback to placeholder if image fails to load
-                e.currentTarget.style.display = 'none';
-                const fallbackElement = e.currentTarget.parentElement;
-                if (fallbackElement) {
-                  fallbackElement.innerHTML = `<span class="text-6xl font-bold text-gray-500">${beach.beach_name.charAt(0)}</span>`;
+                // Log error for debugging
+                console.error(`Failed to load image for ${beach.beach_name}`);
+                
+                // Try alternative image path
+                const fallbackSrc = `/beach_images/${beach.beach_name.split(' ')[1].toLowerCase()}.jfif`;
+                const currentSrc = e.currentTarget.src;
+                
+                if (currentSrc !== fallbackSrc) {
+                  console.log(`Trying fallback image: ${fallbackSrc}`);
+                  e.currentTarget.src = fallbackSrc;
+                } else {
+                  // If fallback also fails, show placeholder
+                  e.currentTarget.style.display = 'none';
+                  const fallbackElement = e.currentTarget.parentElement;
+                  if (fallbackElement) {
+                    fallbackElement.innerHTML = `<span class="text-6xl font-bold text-gray-500">${beach.beach_name.charAt(0)}</span>`;
+                  }
                 }
               }}
             />
