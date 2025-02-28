@@ -1,13 +1,12 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
-import Index from "./pages/Index.js";
-import NotFound from "./pages/NotFound.js";
-import BeachDetail from "./pages/BeachDetail.js";
-import About from "./pages/About.js";
+import Index from "./pages/Index.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import BeachDetail from "./pages/BeachDetail.jsx";
+import About from "./pages/About.jsx";
 
 const queryClient = new QueryClient();
 

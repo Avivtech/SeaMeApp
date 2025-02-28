@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import SearchBar from '@/components/SearchBar';
-import FilterItem from '@/components/FilterItem';
-import BeachCard from '@/components/BeachCard';
-import FilterPanel from '@/components/FilterPanel';
+import Header from '@/components/Header.jsx';
+import Footer from '@/components/Footer.jsx';
+import SearchBar from '@/components/SearchBar.tsx';
+import FilterItem from '@/components/FilterItem.tsx';
+import BeachCard from '@/components/BeachCard.tsx';
+import FilterPanel from '@/components/FilterPanel.jsx';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { 

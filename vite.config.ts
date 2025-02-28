@@ -22,9 +22,7 @@ export default defineConfig(({ mode }) => ({
     }
   },
   plugins: [
-    react({
-      jsxRuntime: 'automatic'
-    })
+    react()
   ],
   resolve: {
     alias: {
