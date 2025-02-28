@@ -30,7 +30,7 @@ const Index = () => {
 
   const { toast } = useToast();
 
-  // Filter categories with their options
+  // Filter categories with their options - removing options that don't match JSON properties
   const [filterCategories, setFilterCategories] = useState([
     {
       id: 'accessibility',
@@ -58,21 +58,11 @@ const Index = () => {
       title: 'אזור',
       icon: <Map className="h-5 w-5" />,
       options: [
-        { id: 'כינרת', label: 'כינרת', isActive: false },
-        { id: 'ים תיכון', label: 'ים תיכון', isActive: false },
-        { id: 'אילת', label: 'אילת', isActive: false }
-      ]
-    },
-    {
-      id: 'beach_features',
-      title: 'מאפייני חוף',
-      icon: <Sparkles className="h-5 w-5" />,
-      options: [
-        { id: 'quiet_area', label: 'אזור שקט', isActive: false },
-        { id: 'breakwater', label: 'שובר גלים', isActive: false },
-        { id: 'blind_assistance', label: 'עזרה לעיוורים', isActive: false }
+        { id: 'כינרת', label: 'כינרת', isActive: false }
+        // Removed ים תיכון and אילת since they don't exist in the current dataset
       ]
     }
+    // Removed the beach_features category as its options don't match JSON properties
   ]);
 
   // Fetch beaches data from JSON file
@@ -188,15 +178,7 @@ const Index = () => {
               return beach.shade_shelter?.accessible_shelter === 'כן';
             case 'water_accessible_wheelchairs':
               return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
-            case 'quiet_area':
-              return beach.additional_accessibility?.quiet_area === 'כן';
-            case 'breakwater':
-              return beach.breakwater === 'כן';
-            case 'blind_assistance':
-              return beach.blind_guidance?.blind_and_visually_impaired_assistance === 'כן';
             case 'כינרת':
-            case 'ים תיכון':
-            case 'אילת':
               return beach.region === filterId;
             default:
               return true;
@@ -303,15 +285,7 @@ const Index = () => {
                   return beach.shade_shelter?.accessible_shelter === 'כן';
                 case 'water_accessible_wheelchairs':
                   return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
-                case 'quiet_area':
-                  return beach.additional_accessibility?.quiet_area === 'כן';
-                case 'breakwater':
-                  return beach.breakwater === 'כן';
-                case 'blind_assistance':
-                  return beach.blind_guidance?.blind_and_visually_impaired_assistance === 'כן';
                 case 'כינרת':
-                case 'ים תיכון':
-                case 'אילת':
                   return beach.region === filterId;
                 default:
                   return true;
