@@ -13,17 +13,17 @@ const AboutItai = () => {
       
       <main className="flex-1">
         {/* Hero Section with 60px top and bottom padding */}
-        <section className="bg-gradient-to-b from-primary/90 to-primary/70 text-white py-[60px] px-6 md:px-12 lg:px-24">
+        <section className="bg-white text-primary py-[60px] px-6 md:px-12 lg:px-24">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-[70px] mt-[60px] font-bold mb-8 animate-fade-in">על איתי</h1>
-            <p className="text-xl md:text-2xl max-w-2xl mx-auto opacity-90 animate-fade-in delay-100">לזכרו של איתי פרי ז״ל</p>
+            <p className="text-xl md:text-2xl max-w-2xl mx-auto text-primary/80 animate-fade-in delay-100">לזכרו של איתי פרי ז״ל</p>
           </div>
         </section>
         
         {/* Quote Section - bigger text */}
-        <section className="py-16 px-4 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <section className="py-16 px-4 bg-white">
           <div className="container mx-auto max-w-4xl">
-            <blockquote className="text-center italic text-2xl md:text-3xl lg:text-4xl text-gray-700 border-r-4 border-primary/40 pr-6 py-4">
+            <blockquote className="text-center italic text-2xl md:text-3xl lg:text-4xl text-primary border-r-4 border-primary/40 pr-6 py-4">
               <p>"לאיתי היה חיוך תמידי על הפנים ועיניים שמחות, הוא הפיץ קסם מיוחד, ששבה כל מי שרק פגש בו."</p>
             </blockquote>
           </div>
