@@ -23,10 +23,7 @@ export default defineConfig(({ mode }) => ({
     }
   },
   plugins: [
-    react({
-      // Using the correct options format for react-swc plugin
-      include: "**/*.{jsx,js,tsx,ts}",
-    }),
+    react(),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
