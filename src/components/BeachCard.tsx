@@ -33,8 +33,30 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return colors[index];
   };
 
-  // Use generic beach image
-  const placeholderImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=60";
+  // Try multiple image sources
+  const tryImages = [
+    `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '-')}.jpg`,
+    `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '-')}.png`,
+    `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '_')}.jpg`,
+    `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '_')}.png`,
+    `https://avivtech.github.io/lovable-uploads/beach-${beach.beach_name.replace(/\s/g, '-')}.jpg`,
+    `https://avivtech.github.io/lovable-uploads/beach-${beach.beach_name.replace(/\s/g, '-')}.png`,
+    "https://avivtech.github.io/lovable-uploads/beach-generic.jpg",
+    "https://avivtech.github.io/lovable-uploads/beach-generic.png",
+    "https://avivtech.github.io/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png",
+    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=60"
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Handle image error by trying the next image
+  const handleImageError = () => {
+    if (currentImageIndex < tryImages.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    } else {
+      setImageError(true);
+    }
+  };
 
   return (
     <Link to={`/beach/${encodeURIComponent(beach.beach_name)}`}>
@@ -54,11 +76,11 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
         >
           {!imageError ? (
             <img 
-              src={placeholderImage}
+              src={tryImages[currentImageIndex]}
               alt={beach.beach_name} 
               className="w-full h-full object-cover"
               onLoad={() => setIsLoaded(true)}
-              onError={() => setImageError(true)}
+              onError={handleImageError}
               loading="lazy"
             />
           ) : (

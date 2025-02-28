@@ -29,9 +29,26 @@ const BeachDetail = () => {
   const [imageError, setImageError] = useState(false);
   const { toast } = useToast();
 
-  // Use a reliable beach image
-  const beachImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80";
+  // Try multiple image sources
+  const getImageSources = (name: string | undefined) => {
+    if (!name) return [];
+    return [
+      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '-')}.jpg`,
+      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '-')}.png`,
+      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '_')}.jpg`,
+      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '_')}.png`,
+      `https://avivtech.github.io/lovable-uploads/beach-${name.replace(/\s/g, '-')}.jpg`,
+      `https://avivtech.github.io/lovable-uploads/beach-${name.replace(/\s/g, '-')}.png`,
+      "https://avivtech.github.io/lovable-uploads/beach-generic.jpg",
+      "https://avivtech.github.io/lovable-uploads/beach-generic.png",
+      "https://avivtech.github.io/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80"
+    ];
+  };
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageSources, setImageSources] = useState<string[]>([]);
+  
   // Generate a placeholder color based on beach name
   const generatePlaceholderColor = (name: string) => {
     const colors = [
@@ -41,6 +58,13 @@ const BeachDetail = () => {
     const index = name?.charCodeAt(0) % colors.length || 0;
     return colors[index];
   };
+
+  useEffect(() => {
+    // Reset image state when beach name changes
+    setCurrentImageIndex(0);
+    setImageError(false);
+    setImageSources(getImageSources(decodeURIComponent(beachName || '')));
+  }, [beachName]);
 
   useEffect(() => {
     const fetchBeachDetail = async () => {
@@ -80,6 +104,15 @@ const BeachDetail = () => {
 
     fetchBeachDetail();
   }, [beachName, toast]);
+
+  // Handle image error by trying the next image
+  const handleImageError = () => {
+    if (currentImageIndex < imageSources.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    } else {
+      setImageError(true);
+    }
+  };
 
   const AccessibilityItem = ({ 
     title, 
@@ -192,12 +225,12 @@ const BeachDetail = () => {
             
             <div className="bg-white rounded-lg shadow-md overflow-hidden scale-in">
               <div className="relative h-64 bg-gray-200">
-                {!imageError ? (
+                {!imageError && imageSources.length > 0 ? (
                   <img
-                    src={beachImage}
+                    src={imageSources[currentImageIndex]}
                     alt={beach.beach_name}
                     className="w-full h-full object-cover"
-                    onError={() => setImageError(true)}
+                    onError={handleImageError}
                   />
                 ) : (
                   <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
