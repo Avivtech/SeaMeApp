@@ -46,6 +46,15 @@ const Header = () => {
             </li>
             <li>
               <Link 
+                to="/about-itai" 
+                className="text-white hover:text-blue-100 transition-colors py-2 block"
+                onClick={() => setIsOpen(false)}
+              >
+                על איתי
+              </Link>
+            </li>
+            <li>
+              <Link 
                 to="/contact" 
                 className="text-white hover:text-blue-100 transition-colors py-2 block"
                 onClick={() => setIsOpen(false)}
