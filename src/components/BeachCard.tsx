@@ -52,6 +52,13 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return name.length > maxLength ? name.substring(0, maxLength) + '...' : name;
   };
 
+  // Generate image path from beach name
+  const getBeachImagePath = (beachName: string) => {
+    // Extract the first word from beach name and convert to lowercase
+    const firstWord = beachName.split(' ')[0].toLowerCase();
+    return `/beach_images/${firstWord}.jfif`;
+  };
+
   return (
     <Link
       to={`/beach/${encodeURIComponent(beach.beach_name)}`}
@@ -65,7 +72,20 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
         {/* Beach Image */}
         <div className="relative h-48 bg-gray-200">
           <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
-            <span className="text-6xl font-bold text-gray-500">{beach.beach_name.charAt(0)}</span>
+            {/* Try to load the beach image with fallback */}
+            <img 
+              src={getBeachImagePath(beach.beach_name)} 
+              alt={beach.beach_name}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                // Fallback to placeholder if image fails to load
+                e.currentTarget.style.display = 'none';
+                const fallbackElement = e.currentTarget.parentElement;
+                if (fallbackElement) {
+                  fallbackElement.innerHTML = `<span class="text-6xl font-bold text-gray-500">${beach.beach_name.charAt(0)}</span>`;
+                }
+              }}
+            />
           </div>
           
           <div className="absolute top-3 left-3">
