@@ -26,7 +26,11 @@ const BeachDetail = () => {
   const { beachName } = useParams<{ beachName: string }>();
   const [beach, setBeach] = useState<Beach | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
   const { toast } = useToast();
+
+  // Placeholder image URL
+  const placeholderImageUrl = './placeholder.svg';
 
   useEffect(() => {
     const fetchBeachDetail = async () => {
@@ -179,9 +183,10 @@ const BeachDetail = () => {
             <div className="bg-white rounded-lg shadow-md overflow-hidden scale-in">
               <div className="relative h-64 bg-gray-200">
                 <img
-                  src="/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png"
+                  src={placeholderImageUrl}
                   alt={beach.beach_name}
                   className="w-full h-full object-cover"
+                  onError={() => setImageError(true)}
                 />
                 
                 <div className="absolute top-4 left-4">

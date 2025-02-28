@@ -14,6 +14,7 @@ interface BeachCardProps {
 
 const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   // Determine accessibility score color
   const getScoreColor = (score: number) => {
@@ -32,6 +33,9 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return colors[index];
   };
 
+  // Placeholder image URL - using a reliable placeholder
+  const placeholderImageUrl = './placeholder.svg';
+
   return (
     <Link to={`/beach/${encodeURIComponent(beach.beach_name)}`}>
       <Card 
@@ -45,15 +49,15 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
           className={cn(
             "h-48 blur-load", 
             generatePlaceholderColor(beach.beach_name),
-            isLoaded ? "loaded" : ""
+            isLoaded && !imageError ? "loaded" : ""
           )}
-          style={{ backgroundImage: `url(/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png)` }}
         >
           <img 
-            src="/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png" 
+            src={placeholderImageUrl}
             alt={beach.beach_name} 
             className="w-full h-full object-cover"
             onLoad={() => setIsLoaded(true)}
+            onError={() => setImageError(true)}
             loading="lazy"
           />
         </div>
