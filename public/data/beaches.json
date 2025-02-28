@@ -1,0 +1,666 @@
+
+[
+    {
+        "beach_name": "חוף אמנון",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.89112,
+            "longitude": 35.596733
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 5.8
+    },
+    {
+        "beach_name": "חוף דוגה",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.8597897,
+            "longitude": 35.6473487
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "לא"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "לא",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 7.2
+    },
+    {
+        "beach_name": "חוף דוגית",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.849993,
+            "longitude": 35.648961
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 8.4
+    },
+    {
+        "beach_name": "חוף כורסי-לבנון-חלוקים",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.82448,
+            "longitude": 35.64491
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "חלקית"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 7.6
+    },
+    {
+        "beach_name": "חוף חוקוק צפון",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.86343,
+            "longitude": 35.5375
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 8.2
+    },
+    {
+        "beach_name": "חוף סוסיתא",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.788826,
+            "longitude": 35.638318
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 7.9
+    },
+    {
+        "beach_name": "חוף גולן",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.848551,
+            "longitude": 35.649691
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 8.2
+    },
+    {
+        "beach_name": "חוף שקמים",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.7616369,
+            "longitude": 35.5579798
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 7.8
+    },
+    {
+        "beach_name": "חוף צינברי",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.73666,
+            "longitude": 35.569718
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "לא"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "לא",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 6.2
+    },
+    {
+        "beach_name": "חוף צמח",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.707813,
+            "longitude": 35.588043
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "לא",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "כן"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "כן",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 7.4
+    },
+    {
+        "beach_name": "חוף ברניקי",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.7616369,
+            "longitude": 35.5579798
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "לא"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "לא",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 5.8
+    },
+    {
+        "beach_name": "חוף כינר",
+        "region": "כינרת",
+        "address": "תל אביב יפו",
+        "location": {
+            "latitude": 32.85942,
+            "longitude": 35.642953
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "לא"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "לא",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 8.4
+    },
+    {
+        "beach_name": "חוף גופרה",
+        "region": "כינרת",
+        "address": "",
+        "location": {
+            "latitude": 32.8033204,
+            "longitude": 35.6436904
+        },
+        "phone_number": "*55477",
+        "accessible_parking": {
+            "disabled_parking": "כן",
+            "elevator_parking": "",
+            "parking_distance": ""
+        },
+        "beach_access": {
+            "obstacle_free_access": "",
+            "solid_path_to_water": "לא"
+        },
+        "shade_shelter": {
+            "accessible_shelter": "לא",
+            "number_of_shelters": ""
+        },
+        "special_wheelchairs": {
+            "water_accessible_wheelchairs": "כן",
+            "wheelchair_location": "",
+            "number_of_wheelchairs": "",
+            "contact_for_wheelchair": ""
+        },
+        "accessible_restrooms": {
+            "disabled_restrooms": "כן"
+        },
+        "accessible_showers": "",
+        "accessible_changing_rooms": "כן",
+        "cafe_restaurant": {
+            "exists": "כן",
+            "wheelchair_accessible": ""
+        },
+        "blind_guidance": {
+            "blind_and_visually_impaired_assistance": ""
+        },
+        "breakwater": "",
+        "additional_accessibility": {
+            "quiet_area": "",
+            "hearing_impaired_assistance": "",
+            "special_signage_for_lifeguard_towers": "",
+            "digital_navigation_system": ""
+        },
+        "beach_season": "",
+        "accessible_public_transportation": "",
+        "rating": 6.9
+    }
+]
