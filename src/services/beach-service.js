@@ -1,18 +1,26 @@
 
+import { fallbackBeaches } from '../data/fallback-beaches.js';
+
 // Fetch all beaches
 export async function fetchBeaches() {
   try {
+    // Use the fetch API with text parsing first
     const response = await fetch('./data/beaches.json');
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     
-    const data = await response.json();
+    // Get the response as text first
+    const textData = await response.text();
+    
+    // Then manually parse it as JSON
+    const data = JSON.parse(textData);
     return data;
   } catch (error) {
     console.error('Error fetching beaches:', error);
-    return [];
+    console.log('Using fallback beach data...');
+    return fallbackBeaches;
   }
 }
 
