@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import SearchBar from '@/components/SearchBar.tsx';
@@ -13,26 +13,33 @@ import {
   Accessibility, 
   Coffee, 
   Map, 
-  Sparkles,
   X,
   Filter,
-  AlertCircle
+  AlertCircle,
+  Check
 } from 'lucide-react';
 
 const Index = () => {
   const [beaches, setBeaches] = useState([]);
   const [filteredBeaches, setFilteredBeaches] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [showFilterPanel, setShowFilterPanel] = useState(false);
   const [searchParams, setSearchParams] = useState({
     query: '',
     region: '',
     filters: {}
   });
 
+  // Refs for dropdown positioning
+  const accessibilityButtonRef = useRef(null);
+  const regionButtonRef = useRef(null);
+
+  // State for dropdown visibility
+  const [showAccessibilityDropdown, setShowAccessibilityDropdown] = useState(false);
+  const [showRegionDropdown, setShowRegionDropdown] = useState(false);
+
   const { toast } = useToast();
 
-  // Filter categories with their options - removing options that don't match JSON properties
+  // Filter categories with their options
   const [filterCategories, setFilterCategories] = useState([
     {
       id: 'accessibility',
@@ -60,11 +67,26 @@ const Index = () => {
       icon: <Map className="h-5 w-5" />,
       options: [
         { id: 'כינרת', label: 'כינרת', isActive: false }
-        // Removed ים תיכון and אילת since they don't exist in the current dataset
       ]
     }
-    // Removed the beach_features category as its options don't match JSON properties
   ]);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (accessibilityButtonRef.current && !accessibilityButtonRef.current.contains(event.target)) {
+        setShowAccessibilityDropdown(false);
+      }
+      if (regionButtonRef.current && !regionButtonRef.current.contains(event.target)) {
+        setShowRegionDropdown(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   // Fetch beaches data from JSON file
   useEffect(() => {
@@ -94,7 +116,9 @@ const Index = () => {
 
   // Apply filters to beaches using the current state
   const applyFilters = () => {
-    setShowFilterPanel(false);
+    // Close any open dropdowns
+    setShowAccessibilityDropdown(false);
+    setShowRegionDropdown(false);
     
     let results = [...beaches];
     console.log("Starting filter with", results.length, "beaches");
@@ -362,7 +386,10 @@ const Index = () => {
     });
     
     setFilteredBeaches(beaches);
-    setShowFilterPanel(false);
+    
+    // Close any open dropdowns
+    setShowAccessibilityDropdown(false);
+    setShowRegionDropdown(false);
     
     toast({
       title: 'הסינון אופס',
@@ -398,20 +425,17 @@ const Index = () => {
     return activeNames;
   };
 
-  // Toggle filter panel for area/region category
-  const showRegionFilters = () => {
-    setActiveFilterCategory('region');
-    setShowFilterPanel(true);
+  // Toggle accessibility dropdown
+  const toggleAccessibilityDropdown = () => {
+    setShowAccessibilityDropdown(!showAccessibilityDropdown);
+    setShowRegionDropdown(false); // Close other dropdown
   };
 
-  // Toggle filter panel for accessibility category
-  const showAccessibilityFilters = () => {
-    setActiveFilterCategory('accessibility');
-    setShowFilterPanel(true);
+  // Toggle region dropdown
+  const toggleRegionDropdown = () => {
+    setShowRegionDropdown(!showRegionDropdown);
+    setShowAccessibilityDropdown(false); // Close other dropdown
   };
-
-  // Track which filter category is active in the panel
-  const [activeFilterCategory, setActiveFilterCategory] = useState(null);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -432,13 +456,54 @@ const Index = () => {
             </div>
             
             <div className="flex justify-center mt-8 gap-4">
-              <FilterItem
-                icon={<Accessibility className="h-5 w-5" />}
-                label="נגישות לחוף"
-                isActive={filterCategories.find(c => c.id === 'accessibility')?.options.some(o => o.isActive)}
-                onClick={showAccessibilityFilters}
-                showDropdownIndicator={true}
-              />
+              {/* Accessibility Filter Button with Dropdown */}
+              <div className="relative" ref={accessibilityButtonRef}>
+                <FilterItem
+                  icon={<Accessibility className="h-5 w-5" />}
+                  label="נגישות לחוף"
+                  isActive={filterCategories.find(c => c.id === 'accessibility')?.options.some(o => o.isActive)}
+                  onClick={toggleAccessibilityDropdown}
+                  showDropdownIndicator={true}
+                />
+                
+                {/* Accessibility Dropdown */}
+                {showAccessibilityDropdown && (
+                  <div className="absolute z-10 mt-2 p-3 bg-white rounded-lg shadow-lg w-64 border border-gray-200 left-1/2 transform -translate-x-1/2">
+                    <div className="text-gray-800 font-medium mb-2">נגישות לחוף</div>
+                    <div className="space-y-2">
+                      {filterCategories.find(c => c.id === 'accessibility')?.options.map(option => (
+                        <div 
+                          key={option.id}
+                          className={`flex items-center p-2 rounded-md cursor-pointer ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
+                          onClick={() => {
+                            handleFilterChange('accessibility', option.id);
+                          }}
+                        >
+                          <div 
+                            className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center ${
+                              option.isActive ? 'bg-primary' : 'border border-gray-300'
+                            }`}
+                          >
+                            {option.isActive && <Check className="h-3 w-3 text-white" />}
+                          </div>
+                          <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                            {option.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex justify-end">
+                      <Button 
+                        className="bg-primary text-white text-xs py-1 px-3 h-8"
+                        onClick={applyFilters}
+                      >
+                        החל סינון
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
               <FilterItem
                 icon={<Coffee className="h-5 w-5" />}
                 label="שירותים"
@@ -448,13 +513,55 @@ const Index = () => {
                   applyFilters();
                 }}
               />
-              <FilterItem
-                icon={<Map className="h-5 w-5" />}
-                label="אזור"
-                isActive={filterCategories.find(c => c.id === 'region')?.options.some(o => o.isActive)}
-                onClick={showRegionFilters}
-                showDropdownIndicator={true}
-              />
+              
+              {/* Region Filter Button with Dropdown */}
+              <div className="relative" ref={regionButtonRef}>
+                <FilterItem
+                  icon={<Map className="h-5 w-5" />}
+                  label="אזור"
+                  isActive={filterCategories.find(c => c.id === 'region')?.options.some(o => o.isActive)}
+                  onClick={toggleRegionDropdown}
+                  showDropdownIndicator={true}
+                />
+                
+                {/* Region Dropdown */}
+                {showRegionDropdown && (
+                  <div className="absolute z-10 mt-2 p-3 bg-white rounded-lg shadow-lg w-64 border border-gray-200 left-1/2 transform -translate-x-1/2">
+                    <div className="text-gray-800 font-medium mb-2">בחר אזור</div>
+                    <div className="space-y-2">
+                      {filterCategories.find(c => c.id === 'region')?.options.map(option => (
+                        <div 
+                          key={option.id}
+                          className={`flex items-center p-2 rounded-md cursor-pointer ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
+                          onClick={() => {
+                            handleFilterChange('region', option.id);
+                          }}
+                        >
+                          <div 
+                            className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center ${
+                              option.isActive ? 'bg-primary' : 'border border-gray-300'
+                            }`}
+                          >
+                            {option.isActive && <Check className="h-3 w-3 text-white" />}
+                          </div>
+                          <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                            {option.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3 flex justify-end">
+                      <Button 
+                        className="bg-primary text-white text-xs py-1 px-3 h-8"
+                        onClick={applyFilters}
+                      >
+                        החל סינון
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
               <FilterItem
                 icon={<Accessibility className="h-5 w-5" />}
                 label="גישה עם כיסא"
@@ -568,24 +675,6 @@ const Index = () => {
           </div>
         </section>
       </main>
-      
-      {/* Filter Panel Modal */}
-      {showFilterPanel && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-          <div 
-            className="w-full max-w-lg scale-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <FilterPanel
-              title={activeFilterCategory === 'region' ? 'בחר אזור' : 'בחר אפשרויות נגישות'}
-              categories={[filterCategories.find(c => c.id === activeFilterCategory)].filter(Boolean)}
-              onFilterChange={handleFilterChange}
-              onReset={resetFilters}
-              onApply={applyFilters}
-            />
-          </div>
-        </div>
-      )}
       
       <Footer />
     </div>
