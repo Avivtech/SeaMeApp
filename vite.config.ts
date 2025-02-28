@@ -24,10 +24,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react({
-      jsxImportSource: '@emotion/react',
-      babel: {
-        plugins: ['@emotion/babel-plugin']
-      }
+      // Using the correct options format for react-swc plugin
+      include: "**/*.{jsx,js,tsx,ts}",
     }),
     mode === 'development' &&
     componentTagger(),
