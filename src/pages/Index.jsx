@@ -472,7 +472,7 @@ const Index = () => {
                         {filterCategories.find(c => c.id === 'accessibility')?.options.map(option => (
                           <div 
                             key={option.id}
-                            className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
+                            className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${option.isActive ? 'bg-primary' : 'hover:bg-gray-100'}`}
                             onClick={() => {
                               handleFilterChange('accessibility', option.id);
                               applyFilters();
@@ -480,12 +480,12 @@ const Index = () => {
                           >
                             <div 
                               className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center border ${
-                                option.isActive ? 'bg-primary border-primary' : 'border-gray-300'
+                                option.isActive ? 'bg-white border-white' : 'border-gray-300'
                               }`}
                             >
-                              {option.isActive && <Check className="h-3 w-3 text-white" />}
+                              {option.isActive && <Check className="h-3 w-3 text-primary" />}
                             </div>
-                            <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                            <span className={`text-sm ${option.isActive ? 'text-white font-medium' : 'text-gray-700'}`}>
                               {option.label}
                             </span>
                           </div>
@@ -524,7 +524,7 @@ const Index = () => {
                         {filterCategories.find(c => c.id === 'region')?.options.map(option => (
                           <div 
                             key={option.id}
-                            className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
+                            className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${option.isActive ? 'bg-primary' : 'hover:bg-gray-100'}`}
                             onClick={() => {
                               handleFilterChange('region', option.id);
                               applyFilters();
@@ -532,12 +532,12 @@ const Index = () => {
                           >
                             <div 
                               className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center border ${
-                                option.isActive ? 'bg-primary border-primary' : 'border-gray-300'
+                                option.isActive ? 'bg-white border-white' : 'border-gray-300'
                               }`}
                             >
-                              {option.isActive && <Check className="h-3 w-3 text-white" />}
+                              {option.isActive && <Check className="h-3 w-3 text-primary" />}
                             </div>
-                            <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                            <span className={`text-sm ${option.isActive ? 'text-white font-medium' : 'text-gray-700'}`}>
                               {option.label}
                             </span>
                           </div>
