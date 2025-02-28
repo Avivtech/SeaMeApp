@@ -24,7 +24,10 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react({
-      include: "**/*.{jsx,js}",
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin']
+      }
     }),
     mode === 'development' &&
     componentTagger(),
