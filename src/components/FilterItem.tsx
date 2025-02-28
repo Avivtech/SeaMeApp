@@ -26,7 +26,7 @@ const FilterItem: React.FC<FilterItemProps> = ({
       className={cn(
         "filter-item flex flex-col items-center justify-center gap-2 p-4 rounded-xl transition-all duration-200",
         isActive 
-          ? "filter-item-active bg-primary/20 border border-primary shadow-sm" 
+          ? "filter-item-active bg-primary/20 border border-white shadow-sm" 
           : "hover:bg-gray-100",
         className
       )}
@@ -34,26 +34,26 @@ const FilterItem: React.FC<FilterItemProps> = ({
     >
       <div className={cn(
         "w-6 h-6 flex items-center justify-center",
-        isActive ? "text-primary" : "text-gray-600"
+        isActive ? "text-white" : "text-gray-600"
       )}>
         {icon}
       </div>
       <div className="flex items-center gap-1">
         <span className={cn(
           "text-sm font-medium",
-          isActive ? "text-primary" : "text-gray-700"
+          isActive ? "text-white" : "text-gray-700"
         )}>
           {label}
         </span>
         {showDropdownIndicator && (
           <ChevronDown className={cn(
             "h-3 w-3 transition-transform",
-            isActive ? "text-primary rotate-180" : "text-gray-500"
+            isActive ? "text-white rotate-180" : "text-gray-500"
           )} />
         )}
       </div>
       {isActive && (
-        <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full"></div>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full"></div>
       )}
     </button>
   );
