@@ -490,6 +490,26 @@ const Index = () => {
                             </span>
                           </div>
                         ))}
+                        
+                        {/* Adding the Toilet/Restrooms option to the accessibility dropdown */}
+                        <div 
+                          className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${searchParams.filters.cafe_restaurant ? 'bg-primary' : 'hover:bg-gray-100'}`}
+                          onClick={() => {
+                            handleFilterChange('services', 'cafe_restaurant');
+                            applyFilters();
+                          }}
+                        >
+                          <div 
+                            className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center border ${
+                              searchParams.filters.cafe_restaurant ? 'bg-white border-white' : 'border-gray-300'
+                            }`}
+                          >
+                            {searchParams.filters.cafe_restaurant && <Check className="h-3 w-3 text-primary" />}
+                          </div>
+                          <span className={`text-sm ${searchParams.filters.cafe_restaurant ? 'text-white font-medium' : 'text-gray-700'}`}>
+                            שירותים
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
