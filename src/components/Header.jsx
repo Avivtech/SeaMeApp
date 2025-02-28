@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import Logo from './Logo';
+import Logo from './Logo.jsx';
 import { Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
