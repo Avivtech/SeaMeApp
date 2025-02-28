@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import FilterItem from './FilterItem.js';
+import FilterItem from './FilterItem.jsx';
 import { X } from 'lucide-react';
 
 const FilterPanel = ({
