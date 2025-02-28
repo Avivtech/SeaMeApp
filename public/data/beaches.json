@@ -2,6 +2,7 @@
 [
 	{
 		"beach_name": "חוף אמנון",
+		"rating": 8,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -50,11 +51,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/amnon.jfif",
-		"other_images": [],
-		"rating": 8
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף דוגה",
+		"rating": 6,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -103,11 +104,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/dugit.jfif",
-		"other_images": [],
-		"rating": 6
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף דוגית",
+		"rating": 9,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -156,11 +157,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/gofra.jfif",
-		"other_images": [],
-		"rating": 9
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף כורסי-לבנון-חלוקים",
+		"rating": 7,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -209,11 +210,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/corsi.jfif",
-		"other_images": [],
-		"rating": 7
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף חוקוק צפון",
+		"rating": 8,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -262,11 +263,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/hokek.jfif",
-		"other_images": [],
-		"rating": 8
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף סוסיתא",
+		"rating": 9,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -315,11 +316,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/susita.jfif",
-		"other_images": [],
-		"rating": 9
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף גולן",
+		"rating": 7,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -368,11 +369,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/golan.jfif",
-		"other_images": [],
-		"rating": 7
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף שקמים",
+		"rating": 8,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -421,11 +422,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/shickmim.jfif",
-		"other_images": [],
-		"rating": 8
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף צינברי",
+		"rating": 5,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -474,11 +475,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/chinberi.jfif",
-		"other_images": [],
-		"rating": 5
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף צמח",
+		"rating": 6,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -527,11 +528,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/chemah.jfif",
-		"other_images": [],
-		"rating": 6
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף ברניקי",
+		"rating": 4,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -580,11 +581,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/barniki.jfif",
-		"other_images": [],
-		"rating": 4
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף כינר",
+		"rating": 5,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -633,11 +634,11 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/cinar.jfif",
-		"other_images": [],
-		"rating": 5
+		"other_images": []
 	},
 	{
 		"beach_name": "חוף גופרה",
+		"rating": 6,
 		"region": "כינרת",
 		"address": "",
 		"location": {
@@ -686,7 +687,6 @@
 		"beach_season": "",
 		"accessible_public_transportation": "",
 		"main_image": "/beach_images/gofra.jfif",
-		"other_images": [],
-		"rating": 6
+		"other_images": []
 	}
 ]
