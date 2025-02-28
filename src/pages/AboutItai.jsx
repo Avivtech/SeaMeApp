@@ -15,7 +15,7 @@ const AboutItai = () => {
         {/* Hero Section with 60px top and bottom padding */}
         <section className="bg-gradient-to-b from-primary/90 to-primary/70 text-white py-[60px] px-6 md:px-12 lg:px-24">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in">על איתי</h1>
+            <h1 className="text-[70px] mt-[60px] font-bold mb-8 animate-fade-in">על איתי</h1>
             <p className="text-xl md:text-2xl max-w-2xl mx-auto opacity-90 animate-fade-in delay-100">לזכרו של איתי פרי ז״ל</p>
           </div>
         </section>
