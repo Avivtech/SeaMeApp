@@ -4,19 +4,57 @@ import { fallbackBeaches } from '../data/fallback-beaches.js';
 // Fetch all beaches
 export async function fetchBeaches() {
   try {
-    // Use the fetch API with text parsing first
-    const response = await fetch('./data/beaches.json');
+    // Try different paths to find the beaches.json file
+    const paths = [
+      './data/beaches.json',
+      '../data/beaches.json',
+      '/data/beaches.json',
+      'data/beaches.json',
+      './public/data/beaches.json'
+    ];
     
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    let response = null;
+    let foundPath = '';
+    
+    // Try each path until we find one that works
+    for (const path of paths) {
+      try {
+        console.log(`Trying to fetch beaches from: ${path}`);
+        const tempResponse = await fetch(path);
+        if (tempResponse.ok) {
+          response = tempResponse;
+          foundPath = path;
+          console.log(`Successfully found beaches at: ${path}`);
+          break;
+        }
+      } catch (pathError) {
+        console.log(`Failed to fetch from ${path}: ${pathError.message}`);
+      }
+    }
+    
+    if (!response || !response.ok) {
+      throw new Error('Could not fetch beaches from any known path');
     }
     
     // Get the response as text first
     const textData = await response.text();
+    console.log(`Got text data from ${foundPath}, length: ${textData.length}`);
+    
+    // Check if the text starts with HTML
+    if (textData.trim().startsWith('<!DOCTYPE html>') || textData.trim().startsWith('<html>')) {
+      console.error('Received HTML instead of JSON');
+      return fallbackBeaches;
+    }
     
     // Then manually parse it as JSON
-    const data = JSON.parse(textData);
-    return data;
+    try {
+      const data = JSON.parse(textData);
+      console.log(`Successfully parsed JSON data, found ${data.length} beaches`);
+      return data;
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError);
+      return fallbackBeaches;
+    }
   } catch (error) {
     console.error('Error fetching beaches:', error);
     console.log('Using fallback beach data...');
