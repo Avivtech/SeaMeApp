@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 
 const AboutItai = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-50 font-heebo">
       <Header />
       
       <main className="flex-1">

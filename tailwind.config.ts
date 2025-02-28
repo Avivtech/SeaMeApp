@@ -102,7 +102,8 @@ export default {
         spin: "spin 1.5s linear infinite",
       },
       fontFamily: {
-        sans: ["Roboto", "Arial", "sans-serif"],
+        sans: ["Heebo", "Roboto", "Arial", "sans-serif"],
+        heebo: ["Heebo", "sans-serif"],
       },
       boxShadow: {
         glass: '0 4px 30px rgba(0, 0, 0, 0.1)',
