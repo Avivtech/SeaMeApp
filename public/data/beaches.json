@@ -11,31 +11,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -64,31 +64,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "לא"
+			"disabled_restrooms": false
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "לא",
+		"accessible_changing_rooms": false,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -117,31 +117,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -170,7 +170,7 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
@@ -179,22 +179,22 @@
 			"solid_path_to_water": "חלקית"
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -223,31 +223,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -276,31 +276,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -329,31 +329,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -382,31 +382,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -435,31 +435,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "לא"
+			"solid_path_to_water": false
 		},
 		"shade_shelter": {
-			"accessible_shelter": "לא",
+			"accessible_shelter": false,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -488,31 +488,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "לא",
+			"disabled_parking": false,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "כן"
+			"solid_path_to_water": true
 		},
 		"shade_shelter": {
-			"accessible_shelter": "כן",
+			"accessible_shelter": true,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -541,31 +541,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "לא"
+			"solid_path_to_water": false
 		},
 		"shade_shelter": {
-			"accessible_shelter": "לא",
+			"accessible_shelter": false,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -594,31 +594,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "לא"
+			"solid_path_to_water": false
 		},
 		"shade_shelter": {
-			"accessible_shelter": "לא",
+			"accessible_shelter": false,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
@@ -647,31 +647,31 @@
 		},
 		"phone_number": "*55477",
 		"accessible_parking": {
-			"disabled_parking": "כן",
+			"disabled_parking": true,
 			"elevator_parking": "",
 			"parking_distance": ""
 		},
 		"beach_access": {
 			"obstacle_free_access": "",
-			"solid_path_to_water": "לא"
+			"solid_path_to_water": false
 		},
 		"shade_shelter": {
-			"accessible_shelter": "לא",
+			"accessible_shelter": false,
 			"number_of_shelters": ""
 		},
 		"special_wheelchairs": {
-			"water_accessible_wheelchairs": "כן",
+			"water_accessible_wheelchairs": true,
 			"wheelchair_location": "",
 			"number_of_wheelchairs": "",
 			"contact_for_wheelchair": ""
 		},
 		"accessible_restrooms": {
-			"disabled_restrooms": "כן"
+			"disabled_restrooms": true
 		},
 		"accessible_showers": "",
-		"accessible_changing_rooms": "כן",
+		"accessible_changing_rooms": true,
 		"cafe_restaurant": {
-			"exists": "כן",
+			"exists": true,
 			"wheelchair_accessible": ""
 		},
 		"blind_guidance": {
