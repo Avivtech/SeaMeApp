@@ -33,8 +33,8 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return colors[index];
   };
 
-  // Placeholder image URL - using a reliable placeholder
-  const placeholderImageUrl = './placeholder.svg';
+  // Use generic beach image
+  const placeholderImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=60";
 
   return (
     <Link to={`/beach/${encodeURIComponent(beach.beach_name)}`}>
@@ -52,14 +52,20 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
             isLoaded && !imageError ? "loaded" : ""
           )}
         >
-          <img 
-            src={placeholderImageUrl}
-            alt={beach.beach_name} 
-            className="w-full h-full object-cover"
-            onLoad={() => setIsLoaded(true)}
-            onError={() => setImageError(true)}
-            loading="lazy"
-          />
+          {!imageError ? (
+            <img 
+              src={placeholderImage}
+              alt={beach.beach_name} 
+              className="w-full h-full object-cover"
+              onLoad={() => setIsLoaded(true)}
+              onError={() => setImageError(true)}
+              loading="lazy"
+            />
+          ) : (
+            <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
+              <span className="text-2xl font-bold text-gray-700">{beach.beach_name.charAt(0)}</span>
+            </div>
+          )}
         </div>
         
         <div className="absolute top-4 left-4">

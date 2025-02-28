@@ -29,8 +29,18 @@ const BeachDetail = () => {
   const [imageError, setImageError] = useState(false);
   const { toast } = useToast();
 
-  // Placeholder image URL
-  const placeholderImageUrl = './placeholder.svg';
+  // Use a reliable beach image
+  const beachImage = "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80";
+
+  // Generate a placeholder color based on beach name
+  const generatePlaceholderColor = (name: string) => {
+    const colors = [
+      'bg-blue-100', 'bg-green-100', 'bg-purple-100', 
+      'bg-yellow-100', 'bg-pink-100', 'bg-indigo-100'
+    ];
+    const index = name?.charCodeAt(0) % colors.length || 0;
+    return colors[index];
+  };
 
   useEffect(() => {
     const fetchBeachDetail = async () => {
@@ -182,12 +192,18 @@ const BeachDetail = () => {
             
             <div className="bg-white rounded-lg shadow-md overflow-hidden scale-in">
               <div className="relative h-64 bg-gray-200">
-                <img
-                  src={placeholderImageUrl}
-                  alt={beach.beach_name}
-                  className="w-full h-full object-cover"
-                  onError={() => setImageError(true)}
-                />
+                {!imageError ? (
+                  <img
+                    src={beachImage}
+                    alt={beach.beach_name}
+                    className="w-full h-full object-cover"
+                    onError={() => setImageError(true)}
+                  />
+                ) : (
+                  <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
+                    <span className="text-6xl font-bold text-gray-700">{beach.beach_name.charAt(0)}</span>
+                  </div>
+                )}
                 
                 <div className="absolute top-4 left-4">
                   <div className={cn(
