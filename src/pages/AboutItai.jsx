@@ -20,6 +20,28 @@ const AboutItai = () => {
           </div>
         </section>
         
+        {/* Images Section */}
+        <section className="py-8 px-4 bg-gray-50">
+          <div className="container mx-auto">
+            <div className="flex flex-col md:flex-row gap-6 justify-center items-center max-w-4xl mx-auto">
+              <div className="w-full md:w-1/2 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img 
+                  src="/lovable-uploads/8d85ee89-9bc4-44e8-a4bd-3c7d9c228e49.png" 
+                  alt="איתי פרי" 
+                  className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <div className="w-full md:w-1/2 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img 
+                  src="/lovable-uploads/adcf69df-a07a-441b-a3cc-287a8f441ca4.png" 
+                  alt="איתי עם ציור של ילדיו" 
+                  className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+        
         {/* Content Section */}
         <section className="py-12 px-4">
           <div className="container mx-auto">
