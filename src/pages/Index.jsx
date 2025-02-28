@@ -10,7 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { 
   Search, 
   Accessibility, 
-  Coffee, 
+  Toilet, 
   Map, 
   X,
   Filter,
@@ -54,7 +54,7 @@ const Index = () => {
     {
       id: 'services',
       title: 'שירותים',
-      icon: <Coffee className="h-5 w-5" />,
+      icon: <Toilet className="h-5 w-5" />,
       options: [
         { id: 'cafe_restaurant', label: 'מסעדה/קפה', isActive: false },
         { id: 'water_accessible_wheelchairs', label: 'כסאות גלגלים למים', isActive: false }
@@ -498,7 +498,7 @@ const Index = () => {
               
               {/* Services Filter - Direct toggle */}
               <FilterItem
-                icon={<Coffee className="h-5 w-5" />}
+                icon={<Toilet className="h-5 w-5" />}
                 label="שירותים"
                 isActive={searchParams.filters.cafe_restaurant}
                 onClick={() => {
