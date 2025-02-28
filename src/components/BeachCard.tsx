@@ -40,6 +40,11 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return `/beach_images/${firstWord}.jfif`;
   };
 
+  // Check if a value is truthy, handling both boolean true and string "כן"
+  const isFeatureAvailable = (value: any): boolean => {
+    return value === true || value === "כן";
+  };
+
   return (
     <Link
       to={`/beach/${encodeURIComponent(beach.beach_name)}`}
@@ -105,21 +110,21 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
           <div className="mt-auto">
             <div className="text-sm font-medium mb-1">מאפייני נגישות</div>
             <div className="flex flex-wrap gap-2">
-              {beach.beach_access?.solid_path_to_water === 'כן' && (
+              {isFeatureAvailable(beach.beach_access?.solid_path_to_water) && (
                 <div className="text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded-full flex items-center">
                   <Check className="h-3 w-3 ml-1" />
                   דרך למים
                 </div>
               )}
               
-              {beach.accessible_restrooms?.disabled_restrooms === 'כן' && (
+              {isFeatureAvailable(beach.accessible_restrooms?.disabled_restrooms) && (
                 <div className="text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded-full flex items-center">
                   <Check className="h-3 w-3 ml-1" />
                   שירותים נגישים
                 </div>
               )}
               
-              {beach.shade_shelter?.accessible_shelter === 'כן' && (
+              {isFeatureAvailable(beach.shade_shelter?.accessible_shelter) && (
                 <div className="text-xs bg-blue-50 text-blue-800 px-2 py-1 rounded-full flex items-center">
                   <Check className="h-3 w-3 ml-1" />
                   צל
