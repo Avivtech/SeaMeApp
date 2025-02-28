@@ -4,10 +4,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import BeachDetail from "./pages/BeachDetail";
-import About from "./pages/About";
+import Index from "./pages/Index.js";
+import NotFound from "./pages/NotFound.js";
+import BeachDetail from "./pages/BeachDetail.js";
+import About from "./pages/About.js";
 
 const queryClient = new QueryClient();
 

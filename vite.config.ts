@@ -23,7 +23,9 @@ export default defineConfig(({ mode }) => ({
     }
   },
   plugins: [
-    react(),
+    react({
+      include: "**/*.{jsx,js}",
+    }),
     mode === 'development' &&
     componentTagger(),
   ].filter(Boolean),
@@ -31,6 +33,6 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.json']
+    extensions: ['.js', '.jsx', '.mjs', '.ts', '.tsx', '.json']
   },
 }));
