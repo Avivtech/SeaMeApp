@@ -437,6 +437,7 @@ const Index = () => {
                 label="נגישות לחוף"
                 isActive={filterCategories.find(c => c.id === 'accessibility')?.options.some(o => o.isActive)}
                 onClick={showAccessibilityFilters}
+                showDropdownIndicator={true}
               />
               <FilterItem
                 icon={<Coffee className="h-5 w-5" />}
@@ -452,6 +453,7 @@ const Index = () => {
                 label="אזור"
                 isActive={filterCategories.find(c => c.id === 'region')?.options.some(o => o.isActive)}
                 onClick={showRegionFilters}
+                showDropdownIndicator={true}
               />
               <FilterItem
                 icon={<Accessibility className="h-5 w-5" />}

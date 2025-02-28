@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
 
 interface FilterItemProps {
   icon: React.ReactNode;
@@ -8,6 +9,7 @@ interface FilterItemProps {
   isActive?: boolean;
   onClick?: () => void;
   className?: string;
+  showDropdownIndicator?: boolean;
 }
 
 const FilterItem: React.FC<FilterItemProps> = ({
@@ -15,7 +17,8 @@ const FilterItem: React.FC<FilterItemProps> = ({
   label,
   isActive = false,
   onClick,
-  className
+  className,
+  showDropdownIndicator = false
 }) => {
   return (
     <button
@@ -35,12 +38,20 @@ const FilterItem: React.FC<FilterItemProps> = ({
       )}>
         {icon}
       </div>
-      <span className={cn(
-        "text-sm font-medium",
-        isActive ? "text-primary" : "text-gray-700"
-      )}>
-        {label}
-      </span>
+      <div className="flex items-center gap-1">
+        <span className={cn(
+          "text-sm font-medium",
+          isActive ? "text-primary" : "text-gray-700"
+        )}>
+          {label}
+        </span>
+        {showDropdownIndicator && (
+          <ChevronDown className={cn(
+            "h-3 w-3 transition-transform",
+            isActive ? "text-primary rotate-180" : "text-gray-500"
+          )} />
+        )}
+      </div>
       {isActive && (
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full"></div>
       )}
