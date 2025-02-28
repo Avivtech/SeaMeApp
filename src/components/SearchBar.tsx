@@ -17,6 +17,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    // Immediately pass the current query value to the onSearch callback
     onSearch(query);
   };
 
