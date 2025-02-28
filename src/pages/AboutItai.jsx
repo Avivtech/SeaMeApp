@@ -13,10 +13,10 @@ const AboutItai = () => {
       
       <main className="flex-1">
         {/* Hero Section with 60px top and bottom padding */}
-        <section className="bg-white text-primary py-[60px] px-6 md:px-12 lg:px-24">
+        <section className="hero-section">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-[70px] mt-[60px] font-bold mb-8 animate-fade-in">על איתי</h1>
-            <p className="text-xl md:text-2xl max-w-2xl mx-auto text-primary/80 animate-fade-in delay-100">לזכרו של איתי פרי ז״ל</p>
+            <h1 className="hero-title">על איתי</h1>
+            <p className="hero-subtitle">לזכרו של איתי פרי ז״ל</p>
           </div>
         </section>
         
