@@ -98,8 +98,17 @@
   }
 
   /* Filter Items */
-  .filter-item.active {
-    @apply bg-primary/10 border border-primary;
+  .filter-item {
+    @apply relative border border-transparent;
+  }
+  
+  .filter-item-active {
+    @apply relative border border-primary/40 bg-primary/10;
+  }
+  
+  .filter-item-active:after {
+    content: '';
+    @apply absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full;
   }
 
   /* Page Transitions */
@@ -171,4 +180,13 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Styles for active filter indicator */
+.filter-indicator {
+  @apply bg-primary/10 text-primary font-medium py-1 px-3 rounded-full text-sm flex items-center;
+}
+
+.filter-indicator-dot {
+  @apply w-2 h-2 bg-primary rounded-full inline-block mr-2;
 }

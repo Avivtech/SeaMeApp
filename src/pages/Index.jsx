@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import SearchBar from '@/components/SearchBar.tsx';
-import FilterItem from '@/components/FilterItem.jsx';
+import FilterItem from '@/components/FilterItem.tsx';
 import BeachCard from '@/components/BeachCard.tsx';
 import FilterPanel from '@/components/FilterPanel.jsx';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,9 @@ import {
   Coffee, 
   Map, 
   Sparkles,
-  X
+  X,
+  Filter,
+  AlertCircle
 } from 'lucide-react';
 
 const Index = () => {
@@ -165,19 +167,19 @@ const Index = () => {
         return activeFilters.every(([filterId, _]) => {
           switch (filterId) {
             case 'disabled_parking':
-              return beach.accessible_parking?.disabled_parking === 'כן';
+              return beach.accessible_parking?.disabled_parking === 'כן' || beach.accessible_parking?.disabled_parking === true;
             case 'solid_path_to_water':
-              return beach.beach_access?.solid_path_to_water === 'כן';
+              return beach.beach_access?.solid_path_to_water === 'כן' || beach.beach_access?.solid_path_to_water === true;
             case 'accessible_restrooms':
-              return beach.accessible_restrooms?.disabled_restrooms === 'כן';
+              return beach.accessible_restrooms?.disabled_restrooms === 'כן' || beach.accessible_restrooms?.disabled_restrooms === true;
             case 'accessible_changing_rooms':
-              return beach.accessible_changing_rooms === 'כן';
+              return beach.accessible_changing_rooms === 'כן' || beach.accessible_changing_rooms === true;
             case 'cafe_restaurant':
-              return beach.cafe_restaurant?.exists === 'כן';
+              return beach.cafe_restaurant?.exists === 'כן' || beach.cafe_restaurant?.exists === true;
             case 'accessible_shelter':
-              return beach.shade_shelter?.accessible_shelter === 'כן';
+              return beach.shade_shelter?.accessible_shelter === 'כן' || beach.shade_shelter?.accessible_shelter === true;
             case 'water_accessible_wheelchairs':
-              return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
+              return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן' || beach.special_wheelchairs?.water_accessible_wheelchairs === true;
             case 'כינרת':
               return beach.region === filterId;
             default:
@@ -272,19 +274,19 @@ const Index = () => {
             return activeFilters.every(([filterId, _]) => {
               switch (filterId) {
                 case 'disabled_parking':
-                  return beach.accessible_parking?.disabled_parking === 'כן';
+                  return beach.accessible_parking?.disabled_parking === 'כן' || beach.accessible_parking?.disabled_parking === true;
                 case 'solid_path_to_water':
-                  return beach.beach_access?.solid_path_to_water === 'כן';
+                  return beach.beach_access?.solid_path_to_water === 'כן' || beach.beach_access?.solid_path_to_water === true;
                 case 'accessible_restrooms':
-                  return beach.accessible_restrooms?.disabled_restrooms === 'כן';
+                  return beach.accessible_restrooms?.disabled_restrooms === 'כן' || beach.accessible_restrooms?.disabled_restrooms === true;
                 case 'accessible_changing_rooms':
-                  return beach.accessible_changing_rooms === 'כן';
+                  return beach.accessible_changing_rooms === 'כן' || beach.accessible_changing_rooms === true;
                 case 'cafe_restaurant':
-                  return beach.cafe_restaurant?.exists === 'כן';
+                  return beach.cafe_restaurant?.exists === 'כן' || beach.cafe_restaurant?.exists === true;
                 case 'accessible_shelter':
-                  return beach.shade_shelter?.accessible_shelter === 'כן';
+                  return beach.shade_shelter?.accessible_shelter === 'כן' || beach.shade_shelter?.accessible_shelter === true;
                 case 'water_accessible_wheelchairs':
-                  return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
+                  return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן' || beach.special_wheelchairs?.water_accessible_wheelchairs === true;
                 case 'כינרת':
                   return beach.region === filterId;
                 default:
@@ -379,6 +381,28 @@ const Index = () => {
     0
   );
 
+  // Determine if any filter is active
+  const isFilterActive = activeFiltersCount > 0 || searchParams.query.trim() !== '';
+
+  // Get active filter names for display
+  const getActiveFilterNames = () => {
+    const activeNames = [];
+    
+    filterCategories.forEach(category => {
+      category.options.forEach(option => {
+        if (option.isActive) {
+          activeNames.push(option.label);
+        }
+      });
+    });
+    
+    if (searchParams.query.trim() !== '') {
+      activeNames.push(`חיפוש: "${searchParams.query}"`);
+    }
+    
+    return activeNames;
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -401,6 +425,7 @@ const Index = () => {
               <FilterItem
                 icon={<Accessibility className="h-5 w-5" />}
                 label="גישה עם כיסא"
+                isActive={searchParams.filters.solid_path_to_water}
                 onClick={() => {
                   handleFilterChange('accessibility', 'solid_path_to_water');
                   applyFilters();
@@ -409,6 +434,7 @@ const Index = () => {
               <FilterItem
                 icon={<Coffee className="h-5 w-5" />}
                 label="שירותים"
+                isActive={searchParams.filters.cafe_restaurant}
                 onClick={() => {
                   handleFilterChange('services', 'cafe_restaurant');
                   applyFilters();
@@ -417,6 +443,7 @@ const Index = () => {
               <FilterItem
                 icon={<Map className="h-5 w-5" />}
                 label="צל"
+                isActive={searchParams.filters.accessible_shelter}
                 onClick={() => {
                   handleFilterChange('services', 'accessible_shelter');
                   applyFilters();
@@ -425,26 +452,54 @@ const Index = () => {
               <FilterItem
                 icon={<Search className="h-5 w-5" />}
                 label="חיפוש מתקדם"
+                isActive={activeFiltersCount > 0}
                 onClick={() => setShowFilterPanel(true)}
               />
             </div>
           </div>
         </section>
         
+        {/* Filter Summary Banner (displayed when filters are active) */}
+        {isFilterActive && (
+          <div className="bg-primary/10 border-y border-primary/20 py-3 px-4 slide-in">
+            <div className="container mx-auto flex items-center justify-between">
+              <div className="flex items-center">
+                <Filter className="h-5 w-5 text-primary mr-2" />
+                <span className="font-medium">
+                  סינון פעיל: 
+                  <span className="ml-1.5 mr-1.5 text-primary font-semibold">
+                    {getActiveFilterNames().slice(0, 2).join(', ')}
+                    {getActiveFilterNames().length > 2 && ` +${getActiveFilterNames().length - 2}`}
+                  </span>
+                </span>
+              </div>
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="text-primary"
+                onClick={resetFilters}
+              >
+                <X className="h-4 w-4 ml-1" />
+                נקה סינון
+              </Button>
+            </div>
+          </div>
+        )}
+        
         {/* Beaches Section */}
         <section className="py-12 px-4">
           <div className="container mx-auto">
             <div className="flex justify-between items-center mb-8">
               <h2 className="text-2xl font-bold">
-                {searchParams.query || activeFiltersCount > 0 
+                {isFilterActive 
                   ? `תוצאות (${filteredBeaches.length})` 
                   : 'חופים מומלצים'}
               </h2>
               
-              {(searchParams.query || activeFiltersCount > 0) && (
+              {isFilterActive && (
                 <Button 
-                  variant="ghost" 
-                  className="text-gray-500"
+                  variant="outline" 
+                  className="text-gray-500 border-primary/30 hover:border-primary"
                   onClick={resetFilters}
                 >
                   <X className="h-4 w-4 ml-1" />
@@ -476,11 +531,12 @@ const Index = () => {
             ) : (
               <div className="text-center py-12">
                 <div className="bg-gray-100 rounded-lg p-8 max-w-md mx-auto">
+                  <AlertCircle className="h-10 w-10 text-primary mx-auto mb-4" />
                   <h3 className="text-xl font-semibold mb-3">לא נמצאו חופים</h3>
                   <p className="text-gray-600 mb-6">
                     לא נמצאו חופים התואמים את הסינון שלך. נסה להרחיב את החיפוש או לנקות את הסינונים.
                   </p>
-                  <Button onClick={resetFilters}>ראה את כל החופים</Button>
+                  <Button onClick={resetFilters} className="bg-primary hover:bg-primary/80">ראה את כל החופים</Button>
                 </div>
               </div>
             )}
