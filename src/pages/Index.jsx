@@ -598,17 +598,6 @@ const Index = () => {
                   ? `תוצאות (${filteredBeaches.length})` 
                   : 'חופים מומלצים'}
               </h2>
-              
-              {isFilterActive && (
-                <Button 
-                  variant="outline" 
-                  className="text-gray-500 border-primary/30 hover:border-primary"
-                  onClick={resetFilters}
-                >
-                  <X className="h-4 w-4 ml-1" />
-                  נקה סינון
-                </Button>
-              )}
             </div>
             
             {isLoading ? (
