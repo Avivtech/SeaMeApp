@@ -106,68 +106,94 @@ const Index = () => {
     setShowFilterPanel(false);
     
     let results = [...beaches];
+    console.log("Starting filter with", results.length, "beaches");
+    console.log("Search query:", searchParams.query);
     
     // Apply text search if any
-    if (searchParams.query) {
-      const searchTerms = searchParams.query.toLowerCase();
+    if (searchParams.query && searchParams.query.trim() !== '') {
+      const searchTerms = searchParams.query.toLowerCase().trim();
+      console.log("Searching for:", searchTerms);
+      
       results = results.filter(beach => {
-        // Search in all relevant text fields
-        const searchableText = [
+        // Convert each property value to string safely
+        const getStringValue = (value) => {
+          if (value === undefined || value === null) return '';
+          if (typeof value === 'object') return JSON.stringify(value);
+          return String(value);
+        };
+
+        // Basic properties
+        const basicProps = [
           beach.beach_name,
           beach.region,
           beach.address,
-          beach.phone_number,
+          beach.phone_number
+        ].filter(Boolean).map(v => getStringValue(v).toLowerCase()).join(' ');
+        
+        // Nested properties
+        const nestedProps = [
           beach.accessible_parking?.disabled_parking,
           beach.beach_access?.solid_path_to_water,
           beach.shade_shelter?.accessible_shelter,
           beach.special_wheelchairs?.water_accessible_wheelchairs,
           beach.accessible_restrooms?.disabled_restrooms,
-          beach.accessible_changing_rooms,
           beach.cafe_restaurant?.exists,
           beach.blind_guidance?.blind_and_visually_impaired_assistance,
           beach.breakwater,
-          beach.additional_accessibility?.quiet_area,
-          beach.additional_accessibility?.hearing_impaired_assistance,
-          beach.beach_season,
-          beach.accessible_public_transportation
-        ].filter(Boolean).join(' ').toLowerCase();
+          beach.accessible_changing_rooms
+        ].filter(Boolean).map(v => getStringValue(v).toLowerCase()).join(' ');
         
-        return searchableText.includes(searchTerms);
+        // Additional accessibility features
+        const accessibilityProps = beach.additional_accessibility ? [
+          beach.additional_accessibility.quiet_area,
+          beach.additional_accessibility.hearing_impaired_assistance
+        ].filter(Boolean).map(v => getStringValue(v).toLowerCase()).join(' ') : '';
+        
+        // Combine all searchable text
+        const searchableText = `${basicProps} ${nestedProps} ${accessibilityProps}`;
+        
+        const result = searchableText.includes(searchTerms);
+        return result;
       });
+      
+      console.log("After search filter:", results.length, "beaches found");
     }
     
     // Apply region filter if selected
     if (searchParams.region) {
       results = results.filter(beach => beach.region === searchParams.region);
+      console.log("After region filter:", results.length, "beaches found");
     }
     
     // Apply accessibility filters
     const activeFilters = Object.entries(searchParams.filters).filter(([_, isActive]) => isActive);
     
     if (activeFilters.length > 0) {
+      console.log("Active filters:", activeFilters);
+      
       results = results.filter(beach => {
         return activeFilters.every(([filterId, _]) => {
           switch (filterId) {
             case 'disabled_parking':
-              return beach.accessible_parking.disabled_parking === 'כן';
+              return beach.accessible_parking?.disabled_parking === 'כן';
             case 'solid_path_to_water':
-              return beach.beach_access.solid_path_to_water === 'כן';
+              return beach.beach_access?.solid_path_to_water === 'כן';
             case 'accessible_restrooms':
-              return beach.accessible_restrooms.disabled_restrooms === 'כן';
+              return beach.accessible_restrooms?.disabled_restrooms === 'כן';
             case 'accessible_changing_rooms':
               return beach.accessible_changing_rooms === 'כן';
             case 'cafe_restaurant':
-              return beach.cafe_restaurant.exists === 'כן';
+              return beach.cafe_restaurant?.exists === 'כן';
             case 'accessible_shelter':
-              return beach.shade_shelter.accessible_shelter === 'כן';
+              return beach.shade_shelter?.accessible_shelter === 'כן';
             case 'water_accessible_wheelchairs':
-              return beach.special_wheelchairs.water_accessible_wheelchairs === 'כן';
+              return beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן';
             case 'quiet_area':
-              return beach.additional_accessibility.quiet_area === 'כן';
+              return beach.additional_accessibility?.quiet_area === 'כן';
             case 'breakwater':
               return beach.breakwater === 'כן';
             case 'blind_assistance':
-              return beach.blind_guidance.blind_and_visually_impaired_assistance === 'כן';
+              return beach.blind_guidance?.blind_and_visually_impaired_assistance === 'כן';
             case 'כינרת':
             case 'ים תיכון':
             case 'אילת':
@@ -177,6 +203,8 @@ const Index = () => {
           }
         });
       });
+      
+      console.log("After accessibility filters:", results.length, "beaches found");
     }
     
     setFilteredBeaches(results);
@@ -193,8 +221,9 @@ const Index = () => {
 
   // Handle search query changes
   const handleSearch = (query) => {
+    console.log("Search query received:", query);
     setSearchParams(prev => ({ ...prev, query }));
-    // Run apply filters immediately after updating the search query
+    // We use setTimeout to ensure the state update has completed before applying filters
     setTimeout(() => applyFilters(), 0);
   };
 
