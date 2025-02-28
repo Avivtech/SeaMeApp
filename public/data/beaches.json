@@ -3,7 +3,7 @@
 	{
 		"beach_name": "חוף אמנון",
 		"rating": 8,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.89112,
@@ -56,7 +56,7 @@
 	{
 		"beach_name": "חוף דוגה",
 		"rating": 6,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.8597897,
@@ -109,7 +109,7 @@
 	{
 		"beach_name": "חוף דוגית",
 		"rating": 9,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.849993,
@@ -162,7 +162,7 @@
 	{
 		"beach_name": "חוף כורסי-לבנון-חלוקים",
 		"rating": 7,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.82448,
@@ -215,7 +215,7 @@
 	{
 		"beach_name": "חוף חוקוק צפון",
 		"rating": 8,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.86343,
@@ -268,7 +268,7 @@
 	{
 		"beach_name": "חוף סוסיתא",
 		"rating": 9,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.788826,
@@ -321,7 +321,7 @@
 	{
 		"beach_name": "חוף גולן",
 		"rating": 7,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.848551,
@@ -374,7 +374,7 @@
 	{
 		"beach_name": "חוף שקמים",
 		"rating": 8,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.7616369,
@@ -427,7 +427,7 @@
 	{
 		"beach_name": "חוף צינברי",
 		"rating": 5,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.73666,
@@ -480,7 +480,7 @@
 	{
 		"beach_name": "חוף צמח",
 		"rating": 6,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.707813,
@@ -533,7 +533,7 @@
 	{
 		"beach_name": "חוף ברניקי",
 		"rating": 4,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.7616369,
@@ -586,7 +586,7 @@
 	{
 		"beach_name": "חוף כינר",
 		"rating": 5,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.85942,
@@ -639,7 +639,7 @@
 	{
 		"beach_name": "חוף גופרה",
 		"rating": 6,
-		"region": "כינרת",
+		"region": "כנרת",
 		"address": "",
 		"location": {
 			"latitude": 32.8033204,
