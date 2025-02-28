@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,13 +7,20 @@ import { Input } from '@/components/ui/input';
 interface SearchBarProps {
   onSearch: (query: string) => void;
   placeholder?: string;
+  value?: string;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ 
   onSearch, 
-  placeholder = "נתחיל בחיפוש..." 
+  placeholder = "נתחיל בחיפוש...",
+  value = ""
 }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(value);
+  
+  // Update internal state when value prop changes
+  useEffect(() => {
+    setQuery(value);
+  }, [value]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();

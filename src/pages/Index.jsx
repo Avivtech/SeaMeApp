@@ -417,7 +417,10 @@ const Index = () => {
             <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90 slide-in">שירות מידע נגיש על חופי ישראל</p>
             
             <div className="max-w-3xl mx-auto">
-              <SearchBar onSearch={handleSearch} />
+              <SearchBar 
+                onSearch={handleSearch} 
+                value={searchParams.query} 
+              />
             </div>
             
             <div className="flex justify-center mt-8 gap-4">
