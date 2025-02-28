@@ -10,6 +10,7 @@ import Index from "./pages/Index.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import BeachDetail from "./pages/BeachDetail.jsx";
 import About from "./pages/About.jsx";
+import AboutItai from "./pages/AboutItai.jsx";
 import LoadingPage from "./components/LoadingPage.jsx";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const AppRoutes = () => (
       <Route path="/" element={<Index />} />
       <Route path="/beach/:beachName" element={<BeachDetail />} />
       <Route path="/about" element={<About />} />
+      <Route path="/about-itai" element={<AboutItai />} />
       {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
       <Route path="*" element={<NotFound />} />
     </Routes>

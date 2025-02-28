@@ -1,58 +1,34 @@
 
 import React from 'react';
-import Logo from './Logo';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white py-10 mt-auto">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-4">
-            <Logo className="text-white" />
-            <p className="text-sm opacity-80 max-w-xs">
-              SeaMe - שירות המספק מידע נגיש על חופי ישראל, מיועד לסייע לאנשים עם מוגבלויות למצוא חופים המתאימים לצרכיהם
+    <footer className="bg-gray-100 border-t border-gray-200">
+      <div className="container mx-auto py-8 px-4">
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-4 md:mb-0">
+            <h2 className="text-2xl font-bold text-primary">SeaMe</h2>
+            <p className="text-gray-600 mt-2">
+              שירות מידע נגיש על חופי ישראל
             </p>
           </div>
           
-          <div className="space-y-4">
-            <h3 className="font-bold text-lg mb-2">קישורים</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  ראשי
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  אודות הפרויקט
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  יצירת קשר
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                  רשימת חופים מלאה
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="space-y-4">
-            <h3 className="font-bold text-lg mb-2">צור קשר</h3>
-            <address className="not-italic text-sm opacity-80">
-              <p>דוא"ל: contact@seame.co.il</p>
-              <p>טלפון: 03-123-4567</p>
-              <p>כל הזכויות שמורות לקבוצת הפרויקט</p>
-            </address>
+          <div className="flex gap-6">
+            <Link to="/about" className="text-gray-600 hover:text-primary transition-colors">
+              אודות
+            </Link>
+            <Link to="/about-itai" className="text-gray-600 hover:text-primary transition-colors">
+              על איתי
+            </Link>
           </div>
         </div>
         
-        <div className="border-t border-white/20 mt-8 pt-8 text-sm opacity-70 text-center">
-          <p>© {new Date().getFullYear()} SeaMe. כל הזכויות שמורות.</p>
+        <div className="mt-8 pt-6 border-t border-gray-200 text-center text-gray-500 text-sm">
+          <p>&copy; 2023 SeaMe. כל הזכויות שמורות.</p>
+          <p className="mt-1">
+            לזכרו של איתי פרי ז"ל
+          </p>
         </div>
       </div>
     </footer>
