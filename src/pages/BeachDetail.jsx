@@ -99,6 +99,27 @@ const BeachDetail = () => {
     fetchBeachDetail();
   }, [beachName, toast]);
 
+  // Function to properly format a value for display
+  const formatValue = (value) => {
+    // Check if value is a boolean
+    if (typeof value === 'boolean') {
+      return value ? 'כן' : 'לא';
+    }
+    
+    // Check if value is "כן", "לא", or "חלקית"
+    if (value === 'כן' || value === 'לא' || value === 'חלקית') {
+      return value;
+    }
+    
+    // For empty values or undefined/null
+    if (!value || value === '' || value === undefined || value === null) {
+      return 'אין מידע';
+    }
+    
+    // Return the value as is for everything else
+    return value;
+  };
+
   const AccessibilityItem = ({ 
     title, 
     value, 
@@ -109,17 +130,17 @@ const BeachDetail = () => {
       <div>
         <h3 className="font-medium text-sm">{title}</h3>
         <div className="flex items-center mt-1">
-          {value === 'כן' ? (
+          {formatValue(value) === 'כן' ? (
             <span className="text-green-600 flex items-center">
               <Check className="w-4 h-4 mr-1" />
               זמין
             </span>
-          ) : value === 'לא' ? (
+          ) : formatValue(value) === 'לא' ? (
             <span className="text-red-500 flex items-center">
               <X className="w-4 h-4 mr-1" />
               לא זמין
             </span>
-          ) : value === 'חלקית' ? (
+          ) : formatValue(value) === 'חלקית' ? (
             <span className="text-yellow-500 flex items-center">
               <span className="w-4 h-4 mr-1">⚠️</span>
               חלקי
@@ -180,7 +201,7 @@ const BeachDetail = () => {
       
       <main className="flex-1">
         {/* Beach Hero Section */}
-        <section className="relative bg-primary/10 py-12">
+        <section className="hero-section">
           <div className="container mx-auto px-4">
             <div className="flex items-center mb-4">
               <Link to="/" className="text-primary flex items-center hover:underline">
@@ -190,8 +211,8 @@ const BeachDetail = () => {
             </div>
             
             <div className="mb-6 slide-in">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">{beach.beach_name}</h1>
-              <div className="flex items-center text-gray-600">
+              <h1 className="hero-title">{beach.beach_name}</h1>
+              <div className="flex items-center text-primary/80">
                 <MapPin className="h-5 w-5 ml-1" />
                 <span>{beach.address || beach.region}</span>
               </div>
@@ -265,26 +286,26 @@ const BeachDetail = () => {
                 
                 <Separator className="my-6" />
                 
-                <h2 className="text-xl font-bold mb-4">אמצעי נגישות</h2>
+                <h2 className="text-xl font-bold mb-4 text-primary">אמצעי נגישות</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <AccessibilityItem 
                     title="חניית נכים" 
-                    value={beach.accessible_parking.disabled_parking}
+                    value={beach.accessible_parking?.disabled_parking}
                     icon={<Car className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="גישה מסודרת למים" 
-                    value={beach.beach_access.solid_path_to_water}
+                    value={beach.beach_access?.solid_path_to_water}
                     icon={<Droplets className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="שירותי נכים" 
-                    value={beach.accessible_restrooms.disabled_restrooms}
+                    value={beach.accessible_restrooms?.disabled_restrooms}
                     icon={<Accessibility className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="מקלחות נגישות" 
-                    value={beach.accessible_showers || 'אין מידע'}
+                    value={beach.accessible_showers}
                     icon={<Droplets className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
@@ -294,17 +315,17 @@ const BeachDetail = () => {
                   />
                   <AccessibilityItem 
                     title="סככות צל נגישות" 
-                    value={beach.shade_shelter.accessible_shelter}
+                    value={beach.shade_shelter?.accessible_shelter}
                     icon={<Sun className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="כסאות גלגלים למים" 
-                    value={beach.special_wheelchairs.water_accessible_wheelchairs}
+                    value={beach.special_wheelchairs?.water_accessible_wheelchairs}
                     icon={<Accessibility className="h-5 w-5" />} 
                   />
                   <AccessibilityItem 
                     title="קפה/מסעדה" 
-                    value={beach.cafe_restaurant.exists}
+                    value={beach.cafe_restaurant?.exists}
                     icon={<Coffee className="h-5 w-5" />} 
                   />
                 </div>
@@ -312,7 +333,7 @@ const BeachDetail = () => {
                 <Separator className="my-6" />
                 
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <h3 className="font-semibold mb-2">שעות פעילות</h3>
+                  <h3 className="font-semibold mb-2 text-primary">שעות פעילות</h3>
                   <p className="text-gray-600">
                     {beach.beach_season || 'עונת הרחצה: בהתאם להנחיות משרד הפנים'}
                   </p>
