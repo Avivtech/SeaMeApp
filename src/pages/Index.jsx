@@ -398,6 +398,21 @@ const Index = () => {
     return activeNames;
   };
 
+  // Toggle filter panel for area/region category
+  const showRegionFilters = () => {
+    setActiveFilterCategory('region');
+    setShowFilterPanel(true);
+  };
+
+  // Toggle filter panel for accessibility category
+  const showAccessibilityFilters = () => {
+    setActiveFilterCategory('accessibility');
+    setShowFilterPanel(true);
+  };
+
+  // Track which filter category is active in the panel
+  const [activeFilterCategory, setActiveFilterCategory] = useState(null);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -419,12 +434,9 @@ const Index = () => {
             <div className="flex justify-center mt-8 gap-4">
               <FilterItem
                 icon={<Accessibility className="h-5 w-5" />}
-                label="גישה עם כיסא"
-                isActive={searchParams.filters.solid_path_to_water}
-                onClick={() => {
-                  handleFilterChange('accessibility', 'solid_path_to_water');
-                  applyFilters();
-                }}
+                label="נגישות לחוף"
+                isActive={filterCategories.find(c => c.id === 'accessibility')?.options.some(o => o.isActive)}
+                onClick={showAccessibilityFilters}
               />
               <FilterItem
                 icon={<Coffee className="h-5 w-5" />}
@@ -437,18 +449,18 @@ const Index = () => {
               />
               <FilterItem
                 icon={<Map className="h-5 w-5" />}
-                label="צל"
-                isActive={searchParams.filters.accessible_shelter}
-                onClick={() => {
-                  handleFilterChange('services', 'water_accessible_wheelchairs');
-                  applyFilters();
-                }}
+                label="אזור"
+                isActive={filterCategories.find(c => c.id === 'region')?.options.some(o => o.isActive)}
+                onClick={showRegionFilters}
               />
               <FilterItem
-                icon={<Search className="h-5 w-5" />}
-                label="חיפוש מתקדם"
-                isActive={activeFiltersCount > 0}
-                onClick={() => setShowFilterPanel(true)}
+                icon={<Accessibility className="h-5 w-5" />}
+                label="גישה עם כיסא"
+                isActive={searchParams.filters.solid_path_to_water}
+                onClick={() => {
+                  handleFilterChange('accessibility', 'solid_path_to_water');
+                  applyFilters();
+                }}
               />
             </div>
           </div>
@@ -563,8 +575,8 @@ const Index = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <FilterPanel
-              title="חיפוש מתקדם"
-              categories={filterCategories}
+              title={activeFilterCategory === 'region' ? 'בחר אזור' : 'בחר אפשרויות נגישות'}
+              categories={[filterCategories.find(c => c.id === activeFilterCategory)].filter(Boolean)}
               onFilterChange={handleFilterChange}
               onReset={resetFilters}
               onApply={applyFilters}
