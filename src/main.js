@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import * as React from './node_modules/react/index.js';
+import { createRoot } from './node_modules/react-dom/client.js';
 import App from './App.jsx';
 import './index.css';
 
