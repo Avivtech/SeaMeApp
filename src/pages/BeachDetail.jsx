@@ -28,26 +28,6 @@ const BeachDetail = () => {
   const [imageError, setImageError] = useState(false);
   const { toast } = useToast();
 
-  // Try multiple image sources
-  const getImageSources = (name) => {
-    if (!name) return [];
-    return [
-      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '-')}.jpg`,
-      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '-')}.png`,
-      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '_')}.jpg`,
-      `https://avivtech.github.io/lovable-uploads/${name.replace(/\s/g, '_')}.png`,
-      `https://avivtech.github.io/lovable-uploads/beach-${name.replace(/\s/g, '-')}.jpg`,
-      `https://avivtech.github.io/lovable-uploads/beach-${name.replace(/\s/g, '-')}.png`,
-      "https://avivtech.github.io/lovable-uploads/beach-generic.jpg",
-      "https://avivtech.github.io/lovable-uploads/beach-generic.png",
-      "https://avivtech.github.io/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png",
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80"
-    ];
-  };
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [imageSources, setImageSources] = useState([]);
-  
   // Generate a placeholder color based on beach name
   const generatePlaceholderColor = (name) => {
     const colors = [
@@ -58,12 +38,27 @@ const BeachDetail = () => {
     return colors[index];
   };
 
-  useEffect(() => {
-    // Reset image state when beach name changes
-    setCurrentImageIndex(0);
-    setImageError(false);
-    setImageSources(getImageSources(decodeURIComponent(beachName || '')));
-  }, [beachName]);
+  // Determine score color
+  const getScoreColor = (score) => {
+    if (score >= 8) return 'bg-green-500';
+    if (score >= 6) return 'bg-yellow-500';
+    return 'bg-red-500';
+  };
+
+  // Get beach image path - extract the beach name's first word for the image filename
+  const getBeachImagePath = (beach) => {
+    if (!beach) return '';
+    
+    if (beach.main_image && beach.main_image !== '') {
+      return beach.main_image;
+    }
+    
+    // Fallback to naming convention if no main_image specified
+    // Try to get the second word if it exists
+    const words = beach.beach_name.split(' ');
+    const imageWord = words.length > 1 ? words[1].toLowerCase() : words[0].toLowerCase();
+    return `/beach_images/${imageWord}.jfif`;
+  };
 
   useEffect(() => {
     const fetchBeachDetail = async () => {
@@ -104,15 +99,6 @@ const BeachDetail = () => {
     fetchBeachDetail();
   }, [beachName, toast]);
 
-  // Handle image error by trying the next image
-  const handleImageError = () => {
-    if (currentImageIndex < imageSources.length - 1) {
-      setCurrentImageIndex(currentImageIndex + 1);
-    } else {
-      setImageError(true);
-    }
-  };
-
   const AccessibilityItem = ({ 
     title, 
     value, 
@@ -145,13 +131,6 @@ const BeachDetail = () => {
       </div>
     </div>
   );
-
-  // Determine score color
-  const getScoreColor = (score) => {
-    if (score >= 8) return 'bg-green-500';
-    if (score >= 6) return 'bg-yellow-500';
-    return 'bg-red-500';
-  };
 
   if (isLoading) {
     return (
@@ -220,18 +199,49 @@ const BeachDetail = () => {
             
             <div className="bg-white rounded-lg shadow-md overflow-hidden scale-in">
               <div className="relative h-64 bg-gray-200">
-                {!imageError && imageSources.length > 0 ? (
+                <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
                   <img
-                    src={imageSources[currentImageIndex]}
+                    src={getBeachImagePath(beach)}
                     alt={beach.beach_name}
                     className="w-full h-full object-cover"
-                    onError={handleImageError}
+                    onError={(e) => {
+                      // Log error for debugging
+                      console.error(`Failed to load image for ${beach.beach_name}`);
+                      
+                      // Try alternative image sources
+                      const fallbackSources = [
+                        `/beach_images/${beach.beach_name.split(' ')[0].toLowerCase()}.jfif`,
+                        `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '-')}.jpg`,
+                        `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '-')}.png`,
+                        `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '_')}.jpg`,
+                        `https://avivtech.github.io/lovable-uploads/${beach.beach_name.replace(/\s/g, '_')}.png`,
+                        `https://avivtech.github.io/lovable-uploads/beach-${beach.beach_name.replace(/\s/g, '-')}.jpg`,
+                        `https://avivtech.github.io/lovable-uploads/beach-${beach.beach_name.replace(/\s/g, '-')}.png`,
+                        "https://avivtech.github.io/lovable-uploads/beach-generic.jpg",
+                        "https://avivtech.github.io/lovable-uploads/beach-generic.png",
+                        "https://avivtech.github.io/lovable-uploads/fbfbe9f4-95ad-4e62-8d19-388243e9e1fc.png",
+                        "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&auto=format&fit=crop&q=80"
+                      ];
+                      
+                      const currentSrc = e.currentTarget.src;
+                      const currentIndex = fallbackSources.indexOf(currentSrc);
+                      
+                      if (currentIndex < fallbackSources.length - 1) {
+                        const nextSrc = fallbackSources[currentIndex + 1];
+                        console.log(`Trying fallback image ${currentIndex + 1}: ${nextSrc}`);
+                        e.currentTarget.src = nextSrc;
+                      } else {
+                        // If all fallbacks fail, show placeholder
+                        setImageError(true);
+                        e.currentTarget.style.display = 'none';
+                        const fallbackElement = e.currentTarget.parentElement;
+                        if (fallbackElement) {
+                          fallbackElement.innerHTML = `<span class="text-6xl font-bold text-gray-700">${beach.beach_name.charAt(0)}</span>`;
+                        }
+                      }
+                    }}
                   />
-                ) : (
-                  <div className={`w-full h-full flex items-center justify-center ${generatePlaceholderColor(beach.beach_name)}`}>
-                    <span className="text-6xl font-bold text-gray-700">{beach.beach_name.charAt(0)}</span>
-                  </div>
-                )}
+                </div>
                 
                 <div className="absolute top-4 left-4">
                   <div className={cn(
