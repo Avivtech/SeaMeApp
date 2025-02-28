@@ -18,33 +18,10 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
     return colors[index];
   };
 
-  // Accessibility features count
-  const getAccessibilityCount = (beach: any) => {
-    let count = 0;
-    
-    if (beach.accessible_parking?.disabled_parking === 'כן') count++;
-    if (beach.beach_access?.solid_path_to_water === 'כן') count++;
-    if (beach.accessible_restrooms?.disabled_restrooms === 'כן') count++;
-    if (beach.accessible_changing_rooms === 'כן') count++;
-    if (beach.shade_shelter?.accessible_shelter === 'כן') count++;
-    if (beach.special_wheelchairs?.water_accessible_wheelchairs === 'כן') count++;
-    
-    return count;
-  };
-
-  const accessibilityCount = getAccessibilityCount(beach);
-
-  // Get a score out of 10 based on accessibility features
-  const getScore = (count: number) => {
-    return Math.min(Math.round(count * 1.7) + 3, 10);
-  };
-
-  const score = getScore(accessibilityCount);
-
-  // Determine score color
-  const getScoreColor = (score: number) => {
-    if (score >= 8) return 'bg-green-500';
-    if (score >= 6) return 'bg-yellow-500';
+  // Determine score color based on the rating
+  const getScoreColor = (rating: number) => {
+    if (rating >= 8) return 'bg-green-500';
+    if (rating >= 6) return 'bg-yellow-500';
     return 'bg-red-500';
   };
 
@@ -107,9 +84,9 @@ const BeachCard: React.FC<BeachCardProps> = ({ beach, className, style }) => {
           <div className="absolute top-3 left-3">
             <div className={cn(
               "text-white font-semibold rounded-full w-10 h-10 flex items-center justify-center",
-              getScoreColor(score)
+              getScoreColor(beach.rating)
             )}>
-              {score}
+              {beach.rating}
             </div>
           </div>
         </div>
