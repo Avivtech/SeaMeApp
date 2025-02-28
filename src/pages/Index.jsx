@@ -5,7 +5,6 @@ import Footer from '@/components/Footer.jsx';
 import SearchBar from '@/components/SearchBar.tsx';
 import FilterItem from '@/components/FilterItem.tsx';
 import BeachCard from '@/components/BeachCard.tsx';
-import FilterPanel from '@/components/FilterPanel.tsx';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { 
@@ -456,7 +455,7 @@ const Index = () => {
             </div>
             
             <div className="flex justify-center mt-8 gap-4">
-              {/* Accessibility Filter Button with Dropdown */}
+              {/* Accessibility Filter Dropdown */}
               <div className="relative" ref={accessibilityButtonRef}>
                 <FilterItem
                   icon={<Accessibility className="h-5 w-5" />}
@@ -466,44 +465,38 @@ const Index = () => {
                   showDropdownIndicator={true}
                 />
                 
-                {/* Accessibility Dropdown */}
                 {showAccessibilityDropdown && (
-                  <div className="absolute z-10 mt-2 p-3 bg-white rounded-lg shadow-lg w-64 border border-gray-200 left-1/2 transform -translate-x-1/2">
-                    <div className="text-gray-800 font-medium mb-2">נגישות לחוף</div>
-                    <div className="space-y-2">
-                      {filterCategories.find(c => c.id === 'accessibility')?.options.map(option => (
-                        <div 
-                          key={option.id}
-                          className={`flex items-center p-2 rounded-md cursor-pointer ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
-                          onClick={() => {
-                            handleFilterChange('accessibility', option.id);
-                          }}
-                        >
+                  <div className="absolute z-50 top-full mt-2 bg-white rounded-lg shadow-lg w-64 border border-gray-200 right-0">
+                    <div className="p-3">
+                      <div className="space-y-2">
+                        {filterCategories.find(c => c.id === 'accessibility')?.options.map(option => (
                           <div 
-                            className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center ${
-                              option.isActive ? 'bg-primary' : 'border border-gray-300'
-                            }`}
+                            key={option.id}
+                            className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
+                            onClick={() => {
+                              handleFilterChange('accessibility', option.id);
+                              applyFilters();
+                            }}
                           >
-                            {option.isActive && <Check className="h-3 w-3 text-white" />}
+                            <div 
+                              className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center border ${
+                                option.isActive ? 'bg-primary border-primary' : 'border-gray-300'
+                              }`}
+                            >
+                              {option.isActive && <Check className="h-3 w-3 text-white" />}
+                            </div>
+                            <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                              {option.label}
+                            </span>
                           </div>
-                          <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
-                            {option.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 flex justify-end">
-                      <Button 
-                        className="bg-primary text-white text-xs py-1 px-3 h-8"
-                        onClick={applyFilters}
-                      >
-                        החל סינון
-                      </Button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
               
+              {/* Services Filter - Direct toggle */}
               <FilterItem
                 icon={<Coffee className="h-5 w-5" />}
                 label="שירותים"
@@ -514,7 +507,7 @@ const Index = () => {
                 }}
               />
               
-              {/* Region Filter Button with Dropdown */}
+              {/* Region Filter Dropdown */}
               <div className="relative" ref={regionButtonRef}>
                 <FilterItem
                   icon={<Map className="h-5 w-5" />}
@@ -524,44 +517,38 @@ const Index = () => {
                   showDropdownIndicator={true}
                 />
                 
-                {/* Region Dropdown */}
                 {showRegionDropdown && (
-                  <div className="absolute z-10 mt-2 p-3 bg-white rounded-lg shadow-lg w-64 border border-gray-200 left-1/2 transform -translate-x-1/2">
-                    <div className="text-gray-800 font-medium mb-2">בחר אזור</div>
-                    <div className="space-y-2">
-                      {filterCategories.find(c => c.id === 'region')?.options.map(option => (
-                        <div 
-                          key={option.id}
-                          className={`flex items-center p-2 rounded-md cursor-pointer ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
-                          onClick={() => {
-                            handleFilterChange('region', option.id);
-                          }}
-                        >
+                  <div className="absolute z-50 top-full mt-2 bg-white rounded-lg shadow-lg w-64 border border-gray-200 right-0">
+                    <div className="p-3">
+                      <div className="space-y-2">
+                        {filterCategories.find(c => c.id === 'region')?.options.map(option => (
                           <div 
-                            className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center ${
-                              option.isActive ? 'bg-primary' : 'border border-gray-300'
-                            }`}
+                            key={option.id}
+                            className={`flex items-center p-2 rounded-md cursor-pointer transition-colors ${option.isActive ? 'bg-primary/10' : 'hover:bg-gray-100'}`}
+                            onClick={() => {
+                              handleFilterChange('region', option.id);
+                              applyFilters();
+                            }}
                           >
-                            {option.isActive && <Check className="h-3 w-3 text-white" />}
+                            <div 
+                              className={`w-4 h-4 rounded-sm mr-2 flex items-center justify-center border ${
+                                option.isActive ? 'bg-primary border-primary' : 'border-gray-300'
+                              }`}
+                            >
+                              {option.isActive && <Check className="h-3 w-3 text-white" />}
+                            </div>
+                            <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
+                              {option.label}
+                            </span>
                           </div>
-                          <span className={`text-sm ${option.isActive ? 'text-primary font-medium' : 'text-gray-700'}`}>
-                            {option.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-3 flex justify-end">
-                      <Button 
-                        className="bg-primary text-white text-xs py-1 px-3 h-8"
-                        onClick={applyFilters}
-                      >
-                        החל סינון
-                      </Button>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
               </div>
               
+              {/* Wheelchair Access Filter - Direct toggle */}
               <FilterItem
                 icon={<Accessibility className="h-5 w-5" />}
                 label="גישה עם כיסא"
