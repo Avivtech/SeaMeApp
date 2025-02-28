@@ -110,11 +110,30 @@ const Index = () => {
     // Apply text search if any
     if (searchParams.query) {
       const searchTerms = searchParams.query.toLowerCase();
-      results = results.filter(beach => 
-        beach.beach_name.toLowerCase().includes(searchTerms) ||
-        beach.region.toLowerCase().includes(searchTerms) ||
-        (beach.address && beach.address.toLowerCase().includes(searchTerms))
-      );
+      results = results.filter(beach => {
+        // Search in all relevant text fields
+        const searchableText = [
+          beach.beach_name,
+          beach.region,
+          beach.address,
+          beach.phone_number,
+          beach.accessible_parking?.disabled_parking,
+          beach.beach_access?.solid_path_to_water,
+          beach.shade_shelter?.accessible_shelter,
+          beach.special_wheelchairs?.water_accessible_wheelchairs,
+          beach.accessible_restrooms?.disabled_restrooms,
+          beach.accessible_changing_rooms,
+          beach.cafe_restaurant?.exists,
+          beach.blind_guidance?.blind_and_visually_impaired_assistance,
+          beach.breakwater,
+          beach.additional_accessibility?.quiet_area,
+          beach.additional_accessibility?.hearing_impaired_assistance,
+          beach.beach_season,
+          beach.accessible_public_transportation
+        ].filter(Boolean).join(' ').toLowerCase();
+        
+        return searchableText.includes(searchTerms);
+      });
     }
     
     // Apply region filter if selected
@@ -175,7 +194,8 @@ const Index = () => {
   // Handle search query changes
   const handleSearch = (query) => {
     setSearchParams(prev => ({ ...prev, query }));
-    applyFilters();
+    // Run apply filters immediately after updating the search query
+    setTimeout(() => applyFilters(), 0);
   };
 
   // Handle filter changes
