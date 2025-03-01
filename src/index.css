@@ -2,7 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -68,8 +68,49 @@
     --ring: 217.2 32.6% 17.5%;
   }
 }
- 
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 85.7% 97.3%;
+
+  --ring: 217.2 32.6% 17.5%;
+}
+}
+
 @layer base {
+<<<<<<< HEAD
+* {
+  @apply border-border;
+}
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+=======
   * {
     @apply border-border;
   }
@@ -77,26 +118,37 @@
     @apply bg-background text-foreground font-heebo;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+>>>>>>> 472f61ae4647d51e93ca611cb4ce5f31672d1ff7
 
-  /* RTL Support */
-  html {
-    direction: rtl;
-  }
+/* RTL Support */
+html {
+  direction: rtl;
+}
 }
 
 @layer components {
-  .slide-in {
-    animation: slide-in 0.5s ease-out;
-  }
+.slide-in {
+  animation: slide-in 0.5s ease-out;
+}
 
-  .fade-in {
-    animation: fade-in 0.5s ease-out;
-  }
+.fade-in {
+  animation: fade-in 0.5s ease-out;
+}
 
-  .scale-in {
-    animation: scale-in 0.3s ease-out;
-  }
+.scale-in {
+  animation: scale-in 0.3s ease-out;
+}
 
+<<<<<<< HEAD
+/* Filter Items */
+.filter-item {
+color: white;
+}
+.filter-item.active {
+  @apply bg-primary/10 border border-primary;
+  color: black;
+}
+=======
   /* Filter Items */
   .filter-item {
     @apply relative border border-transparent;
@@ -110,7 +162,14 @@
     content: '';
     @apply absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full;
   }
+>>>>>>> 472f61ae4647d51e93ca611cb4ce5f31672d1ff7
 
+<<<<<<< HEAD
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+=======
   /* Page Transitions */
   .page-enter {
     opacity: 0;
@@ -146,53 +205,72 @@
   .hero-subtitle {
     @apply text-xl md:text-2xl max-w-2xl mx-auto text-primary/80 animate-fade-in delay-100;
   }
+>>>>>>> 472f61ae4647d51e93ca611cb4ce5f31672d1ff7
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 300ms, transform 300ms;
+}
 }
 
 @keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+from {
+  opacity: 0;
+}
+to {
+  opacity: 1;
+}
 }
 
 @keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+from {
+  opacity: 0;
+  transform: scale(0.95);
+}
+to {
+  opacity: 1;
+  transform: scale(1);
+}
 }
 
 /* Ensure link styling in beach cards matches design */
 .beach-card-link {
-  text-decoration: none;
-  color: inherit;
+text-decoration: none;
+color: inherit;
 }
 
 /* Add animation for loading spinner */
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+from {
+  transform: rotate(0deg);
+}
+to {
+  transform: rotate(360deg);
+}
 }
 
 /* Styles for active filter indicator */
